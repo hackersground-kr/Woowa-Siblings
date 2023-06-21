@@ -1,5 +1,5 @@
 //
-//  SirenApp.swift
+//  AppMain.swift
 //  Siren
 //
 //  Created by Mercen on 2023/06/21.
@@ -8,10 +8,10 @@
 import SwiftUI
 
 @main
-struct SirenApp: App {
+struct AppMain: App {
     var body: some Scene {
         WindowGroup {
-            ContentView()
+            MainView()
         }
     }
 }
