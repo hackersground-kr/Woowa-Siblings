@@ -2,6 +2,10 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools">
 
+    <uses-permission android:name="android.permission.INTERNET"/>
+    <uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION" />
+    <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION" />
+
     <application
         android:allowBackup="true"
         android:dataExtractionRules="@xml/data_extraction_rules"
@@ -10,17 +14,17 @@
         android:label="@string/app_name"
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
-        android:theme="@style/Theme.Android"
+        android:usesCleartextTraffic="true"
+        android:theme="@style/Theme.MyApplication"
         tools:targetApi="31">
+
+        <meta-data
+            android:name="com.kakao.sdk.AppKey"
+            android:value="cff402064d1f2cb51ebcff82004170fd" />
+
         <activity
-            android:name=".MainActivity"
-<<<<<<< HEAD
-            android:exported="true"
-            android:label="@string/app_name"
-            android:theme="@style/Theme.Android">
-=======
+            android:name=".feature.main.MainActivity"
             android:exported="true">
->>>>>>> parent of f6b93f1... ADD :: NaverMap
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
