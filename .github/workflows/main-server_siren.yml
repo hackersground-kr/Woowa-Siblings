@@ -31,6 +31,10 @@ jobs:
       - name: Make Directory
         run: mkdir -p server/deploy
         
+      - name: debug
+        run: ls
+        working-directory: ./build/libs
+        
       - name: Copy War
         run: cp ./build/libs/*.war server/deploy/
         
