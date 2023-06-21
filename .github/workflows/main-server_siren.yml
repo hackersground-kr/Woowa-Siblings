@@ -25,7 +25,7 @@ jobs:
         run: chmod +x server/gradlew
 
       - name: Build with Gradle
-        run: server/gradlew clean bootWar
+        run: server/gradlew clean build
         
       - name: Make Directory
         run: mkdir -p server/deploy
