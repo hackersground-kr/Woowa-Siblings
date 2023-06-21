@@ -11,6 +11,7 @@
 		932987082A431B4900A43EEA /* Alamofire in Frameworks */ = {isa = PBXBuildFile; productRef = 932987072A431B4900A43EEA /* Alamofire */; };
 		932987112A431E3D00A43EEA /* MainViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 932987102A431E3D00A43EEA /* MainViewModel.swift */; };
 		932987132A431FBA00A43EEA /* Launch Screen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 932987122A431FBA00A43EEA /* Launch Screen.storyboard */; };
+		9363669C2A43384E00882772 /* MapView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9363669B2A43384E00882772 /* MapView.swift */; };
 		93B714A32A4319220092D5F2 /* AppMain.swift in Sources */ = {isa = PBXBuildFile; fileRef = 93B714A22A4319220092D5F2 /* AppMain.swift */; };
 		93B714A52A4319220092D5F2 /* MainView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 93B714A42A4319220092D5F2 /* MainView.swift */; };
 		93B714A72A4319230092D5F2 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 93B714A62A4319230092D5F2 /* Assets.xcassets */; };
@@ -21,6 +22,7 @@
 		37DE53D0AB540AB84BCF0145 /* Pods-Siren.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Siren.release.xcconfig"; path = "Target Support Files/Pods-Siren/Pods-Siren.release.xcconfig"; sourceTree = "<group>"; };
 		932987102A431E3D00A43EEA /* MainViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainViewModel.swift; sourceTree = "<group>"; };
 		932987122A431FBA00A43EEA /* Launch Screen.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = "Launch Screen.storyboard"; sourceTree = "<group>"; };
+		9363669B2A43384E00882772 /* MapView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapView.swift; sourceTree = "<group>"; };
 		93B7149F2A4319220092D5F2 /* Siren.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Siren.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		93B714A22A4319220092D5F2 /* AppMain.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppMain.swift; sourceTree = "<group>"; };
 		93B714A42A4319220092D5F2 /* MainView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainView.swift; sourceTree = "<group>"; };
@@ -100,6 +102,7 @@
 			isa = PBXGroup;
 			children = (
 				9329870B2A431E1600A43EEA /* Main */,
+				9363669A2A43384500882772 /* Map */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -118,6 +121,14 @@
 				932987102A431E3D00A43EEA /* MainViewModel.swift */,
 			);
 			path = Main;
+			sourceTree = "<group>";
+		};
+		9363669A2A43384500882772 /* Map */ = {
+			isa = PBXGroup;
+			children = (
+				9363669B2A43384E00882772 /* MapView.swift */,
+			);
+			path = Map;
 			sourceTree = "<group>";
 		};
 		93B714962A4319220092D5F2 = {
@@ -279,6 +290,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				93B714A52A4319220092D5F2 /* MainView.swift in Sources */,
+				9363669C2A43384E00882772 /* MapView.swift in Sources */,
 				93B714A32A4319220092D5F2 /* AppMain.swift in Sources */,
 				932987112A431E3D00A43EEA /* MainViewModel.swift in Sources */,
 			);
