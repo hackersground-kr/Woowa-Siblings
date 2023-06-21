@@ -1,11 +1,12 @@
 # Created by https://www.toptal.com/developers/gitignore/api/android,androidstudio
 # Edit at https://www.toptal.com/developers/gitignore?templates=android,androidstudio
 
-.DS_Store
 ### Android ###
 # Gradle files
 .gradle/
 build/
+
+.DS_Store
 
 # Local configuration file (sdk path, etc)
 local.properties
