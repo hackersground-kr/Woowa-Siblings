@@ -9,6 +9,7 @@
 /* Begin PBXBuildFile section */
 		932987082A431B4900A43EEA /* Alamofire in Frameworks */ = {isa = PBXBuildFile; productRef = 932987072A431B4900A43EEA /* Alamofire */; };
 		932987112A431E3D00A43EEA /* MainViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 932987102A431E3D00A43EEA /* MainViewModel.swift */; };
+		932987132A431FBA00A43EEA /* Launch Screen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 932987122A431FBA00A43EEA /* Launch Screen.storyboard */; };
 		93B714A32A4319220092D5F2 /* AppMain.swift in Sources */ = {isa = PBXBuildFile; fileRef = 93B714A22A4319220092D5F2 /* AppMain.swift */; };
 		93B714A52A4319220092D5F2 /* MainView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 93B714A42A4319220092D5F2 /* MainView.swift */; };
 		93B714A72A4319230092D5F2 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 93B714A62A4319230092D5F2 /* Assets.xcassets */; };
@@ -17,6 +18,7 @@
 
 /* Begin PBXFileReference section */
 		932987102A431E3D00A43EEA /* MainViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainViewModel.swift; sourceTree = "<group>"; };
+		932987122A431FBA00A43EEA /* Launch Screen.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = "Launch Screen.storyboard"; sourceTree = "<group>"; };
 		93B7149F2A4319220092D5F2 /* Siren.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Siren.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		93B714A22A4319220092D5F2 /* AppMain.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppMain.swift; sourceTree = "<group>"; };
 		93B714A42A4319220092D5F2 /* MainView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainView.swift; sourceTree = "<group>"; };
@@ -39,6 +41,8 @@
 		932987092A431D8800A43EEA /* Resources */ = {
 			isa = PBXGroup;
 			children = (
+				93B714A62A4319230092D5F2 /* Assets.xcassets */,
+				932987122A431FBA00A43EEA /* Launch Screen.storyboard */,
 				93B714A22A4319220092D5F2 /* AppMain.swift */,
 			);
 			path = Resources;
@@ -113,7 +117,6 @@
 			isa = PBXGroup;
 			children = (
 				932987092A431D8800A43EEA /* Resources */,
-				93B714A62A4319230092D5F2 /* Assets.xcassets */,
 				9329870A2A431E0C00A43EEA /* Sources */,
 				93B714A82A4319230092D5F2 /* Preview Content */,
 			);
@@ -192,6 +195,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				932987132A431FBA00A43EEA /* Launch Screen.storyboard in Resources */,
 				93B714AA2A4319230092D5F2 /* Preview Assets.xcassets in Resources */,
 				93B714A72A4319230092D5F2 /* Assets.xcassets in Resources */,
 			);
