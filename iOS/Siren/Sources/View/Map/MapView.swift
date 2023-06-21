@@ -6,3 +6,13 @@
 //
 
 import SwiftUI
+
+struct MapView: UIViewControllerRepresentable {
+    func makeUIViewController(context: Context) -> MapVC {
+        return MapVC()
+    }
+
+    func updateUIViewController(_ uiViewController: MapVC, context: Context) {
+        // Update the view controller if needed
+    }
+}

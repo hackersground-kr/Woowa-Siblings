@@ -14,7 +14,8 @@ struct MainView: View {
     var body: some View {
         GeometryReader { outsideProxy in
             ZStack {
-                Color.accentColor.ignoresSafeArea()
+                MapView()
+                    .ignoresSafeArea()
                 VStack {
                     HStack(spacing: 8) {
                         Image(systemName: "magnifyingglass")
