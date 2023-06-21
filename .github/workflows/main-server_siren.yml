@@ -33,7 +33,7 @@ jobs:
         
       - name: debug
         run: ls
-        working-directory: build/libs
+        working-directory: server/build/libs
         
       - name: Copy War
         run: cp ./build/libs/*.war server/deploy/
