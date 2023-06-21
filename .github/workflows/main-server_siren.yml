@@ -24,6 +24,9 @@ jobs:
         with:
           java-version: '17'
 
+      - name: ls
+        run: ls
+
       - name: chmod
         run: chmod +x gradlew
 
