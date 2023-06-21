@@ -7,7 +7,6 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		3EE010E712D001DEB596F70E /* Pods_Siren.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = AF41AEB645DD7B0DA5296B50 /* Pods_Siren.framework */; };
 		932987082A431B4900A43EEA /* Alamofire in Frameworks */ = {isa = PBXBuildFile; productRef = 932987072A431B4900A43EEA /* Alamofire */; };
 		932987112A431E3D00A43EEA /* MainViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 932987102A431E3D00A43EEA /* MainViewModel.swift */; };
 		932987132A431FBA00A43EEA /* Launch Screen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 932987122A431FBA00A43EEA /* Launch Screen.storyboard */; };
@@ -19,7 +18,6 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
-		37DE53D0AB540AB84BCF0145 /* Pods-Siren.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Siren.release.xcconfig"; path = "Target Support Files/Pods-Siren/Pods-Siren.release.xcconfig"; sourceTree = "<group>"; };
 		932987102A431E3D00A43EEA /* MainViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainViewModel.swift; sourceTree = "<group>"; };
 		932987122A431FBA00A43EEA /* Launch Screen.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = "Launch Screen.storyboard"; sourceTree = "<group>"; };
 		9363669B2A43384E00882772 /* MapView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapView.swift; sourceTree = "<group>"; };
@@ -29,8 +27,6 @@
 		93B714A62A4319230092D5F2 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		93B714A92A4319230092D5F2 /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
 		93E85EB92A43353200315DAA /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = Info.plist; sourceTree = "<group>"; };
-		AF41AEB645DD7B0DA5296B50 /* Pods_Siren.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Siren.framework; sourceTree = BUILT_PRODUCTS_DIR; };
-		F73D48652A8436D3CCAAC94F /* Pods-Siren.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Siren.debug.xcconfig"; path = "Target Support Files/Pods-Siren/Pods-Siren.debug.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -39,30 +35,12 @@
 			buildActionMask = 2147483647;
 			files = (
 				932987082A431B4900A43EEA /* Alamofire in Frameworks */,
-				3EE010E712D001DEB596F70E /* Pods_Siren.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
-		4CA2F6834D6EC298174B7AD4 /* Frameworks */ = {
-			isa = PBXGroup;
-			children = (
-				AF41AEB645DD7B0DA5296B50 /* Pods_Siren.framework */,
-			);
-			name = Frameworks;
-			sourceTree = "<group>";
-		};
-		63D412B70D99B34D435D180A /* Pods */ = {
-			isa = PBXGroup;
-			children = (
-				F73D48652A8436D3CCAAC94F /* Pods-Siren.debug.xcconfig */,
-				37DE53D0AB540AB84BCF0145 /* Pods-Siren.release.xcconfig */,
-			);
-			path = Pods;
-			sourceTree = "<group>";
-		};
 		932987092A431D8800A43EEA /* Resources */ = {
 			isa = PBXGroup;
 			children = (
@@ -136,8 +114,6 @@
 			children = (
 				93B714A12A4319220092D5F2 /* Siren */,
 				93B714A02A4319220092D5F2 /* Products */,
-				63D412B70D99B34D435D180A /* Pods */,
-				4CA2F6834D6EC298174B7AD4 /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -175,11 +151,9 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 93B714AD2A4319230092D5F2 /* Build configuration list for PBXNativeTarget "Siren" */;
 			buildPhases = (
-				249E9E4448DD224A88B2FE6D /* [CP] Check Pods Manifest.lock */,
 				93B7149B2A4319220092D5F2 /* Sources */,
 				93B7149C2A4319220092D5F2 /* Frameworks */,
 				93B7149D2A4319220092D5F2 /* Resources */,
-				8038ECC43BD9144D5F606DC7 /* [CP] Embed Pods Frameworks */,
 			);
 			buildRules = (
 			);
@@ -241,48 +215,6 @@
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXResourcesBuildPhase section */
-
-/* Begin PBXShellScriptBuildPhase section */
-		249E9E4448DD224A88B2FE6D /* [CP] Check Pods Manifest.lock */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputFileListPaths = (
-			);
-			inputPaths = (
-				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
-				"${PODS_ROOT}/Manifest.lock",
-			);
-			name = "[CP] Check Pods Manifest.lock";
-			outputFileListPaths = (
-			);
-			outputPaths = (
-				"$(DERIVED_FILE_DIR)/Pods-Siren-checkManifestLockResult.txt",
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
-			showEnvVarsInLog = 0;
-		};
-		8038ECC43BD9144D5F606DC7 /* [CP] Embed Pods Frameworks */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputFileListPaths = (
-				"${PODS_ROOT}/Target Support Files/Pods-Siren/Pods-Siren-frameworks-${CONFIGURATION}-input-files.xcfilelist",
-			);
-			name = "[CP] Embed Pods Frameworks";
-			outputFileListPaths = (
-				"${PODS_ROOT}/Target Support Files/Pods-Siren/Pods-Siren-frameworks-${CONFIGURATION}-output-files.xcfilelist",
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-Siren/Pods-Siren-frameworks.sh\"\n";
-			showEnvVarsInLog = 0;
-		};
-/* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
 		93B7149B2A4319220092D5F2 /* Sources */ = {
@@ -415,7 +347,6 @@
 		};
 		93B714AE2A4319230092D5F2 /* Debug */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = F73D48652A8436D3CCAAC94F /* Pods-Siren.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
@@ -449,7 +380,6 @@
 		};
 		93B714AF2A4319230092D5F2 /* Release */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 37DE53D0AB540AB84BCF0145 /* Pods-Siren.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
