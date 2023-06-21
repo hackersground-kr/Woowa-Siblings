@@ -22,7 +22,7 @@ jobs:
           java-version: '17'
 
       - name: chmod
-        run: |
+        run: \
           chmod +x server/gradlew
           chmod +x server/settings.gradle
           chmod +x server/build.gradle
