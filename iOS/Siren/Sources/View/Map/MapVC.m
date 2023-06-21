@@ -13,6 +13,7 @@
 @interface MapVC : UIViewController
 
 @property KNNaviView *naviView;
+@property (nonatomic, copy) void (^activate)(bool);
 
 @end
 
@@ -20,7 +21,16 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    
+}
+
+- (void)startNavigateWithStartDest:(NSString *)startDest
+                            startX:(CGFloat)startX
+                            startY:(CGFloat)startY
+                           endDest:(NSString *)endDest
+                              endX:(CGFloat)endX
+                              endY:(CGFloat)endY
+                          activate:(void (^)(bool))activate {
+    self->_activate = activate;
     [[KNSDK sharedInstance] initializeWithAppKey:@"165dc5c6c3dfe3ac14491057c95a91bc" clientVersion:@"1.0" userKey:@"1" completion:^(KNError *error) {
         if (error)
         {
@@ -38,9 +48,9 @@
             [session setActive:YES error:&error];
             
             // 출발지 설정
-            KNPOI *start = [[KNPOI alloc] initWithName:@"EXCO" x:345585.0000016 y:267122.999974];
+            KNPOI *start = [[KNPOI alloc] initWithName:startDest x:startX y:startY];
             // 목적지 설정
-            KNPOI *goal = [[KNPOI alloc] initWithName:@"서문시장" x:344661.0000015 y:264974.999974];
+            KNPOI *goal = [[KNPOI alloc] initWithName:endDest x:endX y:endY];
             // 경로 생성
             [KNSDK.sharedInstance makeTripWithStart:start goal:goal vias:[NSArray new] completion:^(KNError * aError, KNTrip * aTrip) {
                 if(aError)
@@ -77,6 +87,7 @@
                             self->_naviView.frame = self.view.bounds;
                             self->_naviView.guideStateDelegate = self;
                             self->_naviView.stateDelegate = self;
+                            self->_activate(true);
                             [self->_naviView sndVolume:1];
                             [self.view addSubview:self->_naviView];
                         }
@@ -86,8 +97,6 @@
         }
     }];
 }
-
-// KNGuidance_GuideStateDelegate
 
 // 길 안내 시작 시 호출
 - (void)guidanceGuideStarted:(KNGuidance *)aGuidance {
@@ -121,6 +130,7 @@
  
 // 길 안내 종료 시 호출
 - (void)guidanceGuideEnded:(KNGuidance *)aGuidance {
+    self->_activate(false);
     [self->_naviView guidanceGuideEnded:aGuidance isShowDriveResultDialog:YES];
 };
  
