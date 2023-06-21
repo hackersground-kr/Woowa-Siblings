@@ -16,13 +16,22 @@ jobs:
     steps:
       - uses: actions/checkout@v2
 
+      - name: Change Directory
+        run: cd server
+
       - name: Set up Java version
         uses: actions/setup-java@v1
         with:
           java-version: '17'
 
-      - name: Build with Maven
-        run: mvn clean install
+      - name: Build with Gradle
+        run: ./gradlew clean build
+        
+      - name: Copy War
+        run: cp ./build/libs/*.war ./deploy/
+        
+      - name: Make zip file
+        run: zip -r -qq -j ./springboot-intro-build.zip ./deploy
 
       - name: Upload artifact for deployment job
         uses: actions/upload-artifact@v2
