@@ -15,9 +15,10 @@ struct MainView: View {
     var body: some View {
         GeometryReader { outsideProxy in
             ZStack {
-                MapView(active: $active, startDest: "EXCO", startX: 345585.0000016, startY: 267122.999974, endDest: "서문시장", endX: 344661.0000015, endY: 264974.999974)
-                    .ignoresSafeArea()
-                if !active {
+                if active {
+                    MapView(active: $active, startDest: "EXCO", startX: 345585.0000016, startY: 267122.999974, endDest: "서문시장", endX: 344661.0000015, endY: 264974.999974)
+                        .ignoresSafeArea()
+                } else {
                     VStack {
                         HStack(spacing: 8) {
                             Image(systemName: "magnifyingglass")

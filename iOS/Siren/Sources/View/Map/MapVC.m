@@ -193,5 +193,8 @@
     [self->_naviView guidance:aGuidance didUpdateCitsGuide:aCitsGuide];
 }
 
+- (void)naviViewGuideEnded:(KNNaviView * _Nonnull)aNaviView {
+    self->_activate(false);
+}
 
 @end
