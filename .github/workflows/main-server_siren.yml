@@ -16,31 +16,25 @@ jobs:
     steps:
       - uses: actions/checkout@v2
 
-      - name: Change Directory
-        run: cd server
-
       - name: Set up Java version
         uses: actions/setup-java@v1
         with:
           java-version: '17'
 
-      - name: ls
-        run: ls
-
       - name: chmod
-        run: chmod +x gradlew
+        run: chmod +x server/gradlew
 
       - name: Build with Gradle
-        run: ./gradlew bootWar
+        run: server/gradlew bootWar
         
       - name: Make Directory
-        run: mkdir -p deploy
+        run: mkdir -p server/deploy
         
       - name: Copy War
-        run: cp ./build/libs/*.war ./deploy/
+        run: cp ./build/libs/*.war server/deploy/
         
       - name: Make zip file
-        run: zip -r -qq -j ./springboot-intro-build.zip ./deploy
+        run: zip -r -qq -j ./springboot-intro-build.zip server/deploy
 
       - name: Upload artifact for deployment job
         uses: actions/upload-artifact@v2
