@@ -25,7 +25,10 @@ jobs:
           java-version: '17'
 
       - name: Build with Gradle
-        run: ./gradlew clean build
+        run: ./gradlew bootWar
+        
+      - name: Make Directory
+        run: mkdir -p deploy
         
       - name: Copy War
         run: cp ./build/libs/*.war ./deploy/
