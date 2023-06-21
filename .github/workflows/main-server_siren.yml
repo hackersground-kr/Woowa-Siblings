@@ -23,14 +23,10 @@ jobs:
 
       - name: chmod
         run: chmod +x server/gradlew
-        
-      - name: Build with Gradle
-        run: |
-          cd server
-          ls
 
       - name: Build with Gradle
         run: server/gradlew clean build
+        shell: bash
         
       - name: Make Directory
         run: mkdir -p server/deploy
