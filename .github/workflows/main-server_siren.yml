@@ -31,12 +31,8 @@ jobs:
       - name: Make Directory
         run: mkdir -p server/deploy
         
-      - name: debug
-        run: ls
-        working-directory: server/build/libs
-        
       - name: Copy War
-        run: cp ./build/libs/*.war server/deploy/
+        run: cp server/build/libs/*.war server/deploy/
         
       - name: Make zip file
         run: zip -r -qq -j ./springboot-intro-build.zip server/deploy
