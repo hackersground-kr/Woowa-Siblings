@@ -44,5 +44,5 @@ jobs:
           app-name: 'siren'
           slot-name: 'Production'
           publish-profile: ${{ secrets.AZUREAPPSERVICE_PUBLISHPROFILE_7E99AD0C1D8B49DE8F51757891AAE21F }}
-          package: '*.war'
+          package: '*.zip'
           working-directory: server/deploy
