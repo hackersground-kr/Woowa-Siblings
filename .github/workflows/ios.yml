@@ -10,7 +10,8 @@ jobs:
   build:
     name: Build and Test default scheme using any available iPhone simulator
     runs-on: macos-latest
-
+    env:
+        working-directory: ./iOS
     steps:
       - name: Checkout
         uses: actions/checkout@v3
@@ -42,12 +43,14 @@ jobs:
           # apply provisioning profile
           mkdir -p ~/Library/MobileDevice/Provisioning\ Profiles
           cp $PP_PATH ~/Library/MobileDevice/Provisioning\ Profiles
+        working-directory: ${{env.working-directory}}
       - name: Set Default Scheme
         run: |
           scheme_list=$(xcodebuild -list -json | tr -d "\n")
           default=$(echo $scheme_list | ruby -e "require 'json'; puts JSON.parse(STDIN.gets)['project']['targets'][0]")
           echo $default | cat >default
           echo Using default scheme: $default
+        working-directory: ${{env.working-directory}}
       - name: Build
         env:
           scheme: ${{ 'default' }}
@@ -59,6 +62,7 @@ jobs:
           if [ "`ls -A | grep -i \\.xcworkspace\$`" ]; then filetype_parameter="workspace" && file_to_build="`ls -A | grep -i \\.xcworkspace\$`"; else filetype_parameter="project" && file_to_build="`ls -A | grep -i \\.xcodeproj\$`"; fi
           file_to_build=`echo $file_to_build | awk '{$1=$1;print}'`
           xcodebuild build-for-testing -scheme "$scheme" -"$filetype_parameter" "$file_to_build" -destination "platform=$platform,name=$device"
+        working-directory: ${{env.working-directory}}
       - name: Test
         env:
           scheme: ${{ 'default' }}
@@ -70,3 +74,4 @@ jobs:
           if [ "`ls -A | grep -i \\.xcworkspace\$`" ]; then filetype_parameter="workspace" && file_to_build="`ls -A | grep -i \\.xcworkspace\$`"; else filetype_parameter="project" && file_to_build="`ls -A | grep -i \\.xcodeproj\$`"; fi
           file_to_build=`echo $file_to_build | awk '{$1=$1;print}'`
           xcodebuild test-without-building -scheme "$scheme" -"$filetype_parameter" "$file_to_build" -destination "platform=$platform,name=$device"
+        working-directory: ${{env.working-directory}}
