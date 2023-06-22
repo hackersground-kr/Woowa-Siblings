@@ -24,9 +24,6 @@
 ## 설치 방법
 
 > **아래 제공하는 설치 방법을 통해 심사위원단이 여러분의 제품/서비스를 실제 Microsoft 애저 클라우드에 배포하고 설치할 수 있어야 합니다. 만약 아래 설치 방법대로 따라해서 배포 및 설치가 되지 않을 경우 본선에 진출할 수 없습니다.**
-> - iOS : 
-> - android : 
-> - backend : 
 
 ### 사전 준비 사항
 
@@ -38,8 +35,12 @@
 ## 시작하기
 
 > **여러분의 제품/서비스를 Microsoft 애저 클라우드에 배포하기 위한 절차를 구체적으로 나열해 주세요.**
-> > - iOS : 
+> > - iOS :
+
 > android :
+- Microsoft Azure 계정
+- 안드로이드 빌드 aab or apk 파일
+- Github 계정
 Microsoft App Center에 사전 준비 사항
 1. [App Center](https://appcenter.ms/apps) 에 접속해서 로그인한다.
 2. Add new app 버튼을 누르고 `App name`, `Release Type`, `Icon`, `OS`, `Platform`을 선택한 후 Add new app을 클릭한다.
