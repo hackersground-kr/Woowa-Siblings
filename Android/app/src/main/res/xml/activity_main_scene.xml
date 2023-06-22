@@ -1,0 +1,77 @@
+<?xml version="1.0" encoding="utf-8"?>
+<MotionScene xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <Transition
+        android:id="@+id/rightToLeft"
+        app:constraintSetEnd="@id/end"
+        app:constraintSetStart="@id/start"
+        app:duration="1000">
+
+        <OnSwipe
+            app:dragDirection="dragLeft"
+            app:touchAnchorId="@id/motionContainer" />
+
+        <KeyFrameSet>
+            <KeyAttribute
+                android:rotationY="0"
+                app:framePosition="0"
+                app:motionTarget="@id/motionContainer" />
+            <KeyAttribute
+                android:rotationY="50"
+                app:framePosition="25"
+                app:motionTarget="@id/motionContainer" />
+            <KeyAttribute
+                android:rotationY="100"
+                app:framePosition="50"
+                app:motionTarget="@id/motionContainer" />
+            <KeyAttribute
+                android:rotationY="50"
+                app:framePosition="75"
+                app:motionTarget="@id/motionContainer" />
+            <KeyAttribute
+                android:rotationY="0"
+                app:framePosition="100"
+                app:motionTarget="@id/motionContainer" />
+        </KeyFrameSet>
+    </Transition>
+
+    <Transition
+        android:id="@+id/leftToRight"
+        app:constraintSetEnd="@id/end"
+        app:constraintSetStart="@id/start"
+        app:duration="1000">
+
+        <OnSwipe
+            app:dragDirection="dragRight"
+            app:touchAnchorId="@+id/motionContainer" />
+
+        <KeyFrameSet>
+            <KeyAttribute
+                android:rotationY="0"
+                app:framePosition="0"
+                app:motionTarget="@id/motionContainer" />
+            <KeyAttribute
+                android:rotationY="-50"
+                app:framePosition="25"
+                app:motionTarget="@id/motionContainer" />
+            <KeyAttribute
+                android:rotationY="-100"
+                app:framePosition="50"
+                app:motionTarget="@id/motionContainer" />
+            <KeyAttribute
+                android:rotationY="-50"
+                app:framePosition="75"
+                app:motionTarget="@id/motionContainer" />
+            <KeyAttribute
+                android:rotationY="0"
+                app:framePosition="100"
+                app:motionTarget="@id/motionContainer" />
+        </KeyFrameSet>
+    </Transition>
+
+    <ConstraintSet android:id="@+id/start" />
+
+    <ConstraintSet android:id="@+id/end" />
+
+</MotionScene>
