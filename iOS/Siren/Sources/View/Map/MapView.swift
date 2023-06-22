@@ -6,19 +6,15 @@
 //
 
 import SwiftUI
-import NMapsMap
+import MapKit
 
-struct MapView: UIViewRepresentable {
+struct MapView: View {
+    @Binding var coordinates: [Coordinate]
     
-    let coordinates: [Coordinate]
+  
     
-    func makeUIView(context: Context) -> UIView {
-        let view = UIView()
-        let mapView = NMFMapView(frame: .infinite)
-        view.addSubview(mapView)
-        return view
-    }
-
-    func updateUIView(_ uiViewController: UIView, context: Context) {
+    @State private var region = MKCoordinateRegion(center: CLLocationCoordinate2D(latitude: 37.5666791, longitude: 126.9782914), span: MKCoordinateSpan(latitudeDelta: 0.5, longitudeDelta: 0.5))
+    var body: some View {
+        Map(coordinateRegion: $region, showsUserLocation: false, userTrackingMode: .constant(.follow))
     }
 }

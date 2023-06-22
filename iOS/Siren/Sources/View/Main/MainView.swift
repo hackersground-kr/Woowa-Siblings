@@ -26,10 +26,8 @@ struct MainView: View {
                     .ignoresSafeArea()
             } else {
                 ZStack {
-                    if let coordinates = viewModel.coordinates {
-                        MapView(coordinates: coordinates)
-                            .ignoresSafeArea()
-                    }
+                    MapView(coordinates: $viewModel.coordinates)
+                        .ignoresSafeArea()
                     VStack {
                         Spacer()
                         ScrollView(.horizontal, showsIndicators: false) {
@@ -48,7 +46,7 @@ struct MainView: View {
                                                         HStack(spacing: 4) {
                                                             Text("경북대학교병원")
                                                                 .font(.system(size: 16, weight: .bold))
-                                                            Text("4.7km")
+                                                            Text("1.1km")
                                                                 .font(.system(size: 12, weight: .bold))
                                                                 .foregroundColor(.white)
                                                                 .padding(.horizontal, 5)
@@ -64,7 +62,7 @@ struct MainView: View {
                                                     HStack(alignment: .bottom, spacing: 3) {
                                                         Text("약")
                                                             .font(.system(size: 12, weight: .medium))
-                                                        Text("3분")
+                                                        Text("1분")
                                                             .font(.system(size: 14, weight: .bold))
                                                             .foregroundColor(.accentColor)
                                                         Text("소요 예정")
@@ -116,11 +114,5 @@ struct MainView: View {
             }
         }
         .onAppear(perform: viewModel.initData)
-    }
-}
-
-struct MainView_Previews: PreviewProvider {
-    static var previews: some View {
-        MainView()
     }
 }
