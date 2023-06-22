@@ -75,11 +75,11 @@ Distribute 버튼을 누릅니다.
 ### 12단계
 우측 상단의 휴대폰 버튼을 누르면 앱을 설치할 준비가 끝납니다. 
 
-![step13](https://github.com/hackersground-kr/Woowa-Siblings/blob/87798e57811869814eaa46c8e8e52f0a706c823b/images/iOS/Step13.png)
+![step13](https://github.com/hackersground-kr/Woowa-Siblings/blob/2c25494017f626f80aecbcb87f7cf793abb95eff/images/iOS/Step13.png)
 ### 13단계
 iOS 디바이스로 화면에 나온 QR코드를 인식하고 로그인하면 나오는 이 페이지에서 Add Device 버튼을 누릅니다. 
 
-![step14](https://github.com/hackersground-kr/Woowa-Siblings/blob/87798e57811869814eaa46c8e8e52f0a706c823b/images/iOS/Step14.png)
+![step14](https://github.com/hackersground-kr/Woowa-Siblings/blob/2c25494017f626f80aecbcb87f7cf793abb95eff/images/iOS/Step14.png)
 ### 14단계
 프로파일을 설정한 후 브라우저로 돌아와 Install 버튼을 누르면 앱이 설치됩니다. 
 
