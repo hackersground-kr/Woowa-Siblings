@@ -42,7 +42,7 @@ class Requests {
                    method: method,
                    parameters: params,
                    encoding: method == .get ? URLEncoding.default : JSONEncoding.default,
-                   headers: ["Authorization": "KakaoAK 165dc5c6c3dfe3ac14491057c95a91bc"],
+                   headers: ["Authorization": "KakaoAK"],
                    interceptor: Interceptor()
         )
         .validate()
