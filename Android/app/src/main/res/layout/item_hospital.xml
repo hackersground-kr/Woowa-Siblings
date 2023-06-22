@@ -101,15 +101,14 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginStart="2dp"
-            android:layout_marginBottom="18dp"
             android:fontFamily="@font/pretendard_bold"
             android:text="3분"
             android:textColor="@color/accent_color"
             android:textSize="14sp"
+            android:layout_marginBottom="10dp"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintStart_toEndOf="@+id/tv_some"
-            app:layout_constraintTop_toBottomOf="@+id/tv_address"
-            app:layout_constraintVertical_bias="1.0" />
+            app:layout_constraintTop_toBottomOf="@+id/tv_address" />
 
         <TextView
             android:layout_width="wrap_content"

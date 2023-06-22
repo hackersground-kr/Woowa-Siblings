@@ -2,6 +2,7 @@ package com.example.siren.feature.navigation
 
 import android.os.Bundle
 import android.text.TextUtils
+import android.util.Log
 import androidx.appcompat.app.AppCompatActivity
 import com.example.siren.databinding.ActivityNavigationBinding
 import com.example.siren.util.SirenApplication
@@ -9,7 +10,9 @@ import com.example.siren.util.carTypeWithIdx
 import com.example.siren.util.fuelTypeWithIdx
 import com.kakaomobility.knsdk.KNRouteAvoidOption
 import com.kakaomobility.knsdk.KNRoutePriority
+import com.kakaomobility.knsdk.KNSDK
 import com.kakaomobility.knsdk.common.objects.KNError
+import com.kakaomobility.knsdk.common.objects.KNPOI
 import com.kakaomobility.knsdk.guidance.knguidance.KNGuidance
 import com.kakaomobility.knsdk.guidance.knguidance.KNGuidance_CitsGuideDelegate
 import com.kakaomobility.knsdk.guidance.knguidance.KNGuidance_GuideStateDelegate
@@ -53,53 +56,90 @@ class NavigationActivity : AppCompatActivity(), KNNaviView_StateDelegate,
             carType = carTypeWithIdx(SirenApplication.prefs.getCarType())
         }
 
-        val avoidOption = intent?.getIntExtra("avoidOption", 0)
-        val routeOption = intent?.getSerializableExtra("routeOption") as KNRoutePriority?
-        val priRoute = intent?.getBooleanExtra("priRoute", true)
-        val key = intent?.getStringExtra("tripKey")
+//        val avoidOption = intent?.getIntExtra("start", 0)
+//        val routeOption = intent?.getSerializableExtra("routeOption") as KNRoutePriority?
+//        val priRoute = intent?.getBooleanExtra("priRoute", true)
+//        val key = intent?.getStringExtra("tripKey")
 
-        var trip: KNTrip? = null
-        if (!TextUtils.isEmpty(key)) {
-            trip = SirenApplication.instance.getDataHolder(key)
-        }
+        val startName = intent?.getStringExtra("startName")
+        val goalName = intent?.getStringExtra("goalName")
+        val startLongitude = intent?.getDoubleExtra("startLongitude", 0.0)
+        val startLatitude = intent?.getDoubleExtra("startLatitude", 0.0)
+        val goalLongitude = intent?.getDoubleExtra("goalLongitude", 0.0)
+        val goalLatitude = intent?.getDoubleExtra("goalLatitude", 0.0)
 
-        if (trip != null) {
-            SirenApplication.knsdk.sharedGuidance()?.apply {
-                guideStateDelegate = this@NavigationActivity
-                locationGuideDelegate = this@NavigationActivity
-                routeGuideDelegate = this@NavigationActivity
-                safetyGuideDelegate = this@NavigationActivity
-                voiceGuideDelegate = this@NavigationActivity
-                citsGuideDelegate = this@NavigationActivity
+        val start = KNPOI(startName ?: "", startLongitude!!.toInt(), startLatitude!!.toInt())
+        val goal = KNPOI(goalName ?: "", goalLongitude!!.toInt(), goalLatitude!!.toInt())
 
-                binding.naviView.initWithGuidance(
-                    this,
-                    trip,
-                    routeOption!!,
-                    avoidOption!!
-                )
+        val curRoutePriority = KNRoutePriority.KNRoutePriority_Recommand
+        val curAvoidOptions = KNRouteAvoidOption.KNRouteAvoidOption_RoadEvent.value or KNRouteAvoidOption.KNRouteAvoidOption_SZone.value
 
-                binding.naviView.post {
-                    run {
-                        if (priRoute == false) {
-                            changeRoute()
-                        }
+        KNSDK.makeTripWithStart(start, goal, null, null) { aError, aTrip ->
+            aTrip?.routeWithPriority(curRoutePriority, curAvoidOptions) { error, _ ->
+                if (error != null) {
+                    Log.e("ERROR", aError.toString())
+                } else {
+                    SirenApplication.knsdk.sharedGuidance()?.apply {
+                        guideStateDelegate = this@NavigationActivity
+                        locationGuideDelegate = this@NavigationActivity
+                        routeGuideDelegate = this@NavigationActivity
+                        safetyGuideDelegate = this@NavigationActivity
+                        voiceGuideDelegate = this@NavigationActivity
+                        citsGuideDelegate = this@NavigationActivity
+
+                        binding.naviView.initWithGuidance(
+                            this,
+                            trip,
+                            curRoutePriority,
+                            curAvoidOptions
+                        )
                     }
                 }
             }
-        } else {
-            SirenApplication.knsdk.sharedGuidance()?.apply {
-                //  guidance delegate 등록
-                guideStateDelegate = this@NavigationActivity
-                locationGuideDelegate = this@NavigationActivity
-                routeGuideDelegate = this@NavigationActivity
-                safetyGuideDelegate = this@NavigationActivity
-                voiceGuideDelegate = this@NavigationActivity
-                citsGuideDelegate = this@NavigationActivity
-
-                binding.naviView.initWithGuidance(this, null, KNRoutePriority.KNRoutePriority_Recommand, KNRouteAvoidOption.KNRouteAvoidOption_None.value)
-            }
         }
+
+//        var trip: KNTrip? = null
+//        if (!TextUtils.isEmpty(key)) {
+//            trip = SirenApplication.instance.getDataHolder(key)
+//        }
+//
+//        if (trip != null) {
+//            SirenApplication.knsdk.sharedGuidance()?.apply {
+//                guideStateDelegate = this@NavigationActivity
+//                locationGuideDelegate = this@NavigationActivity
+//                routeGuideDelegate = this@NavigationActivity
+//                safetyGuideDelegate = this@NavigationActivity
+//                voiceGuideDelegate = this@NavigationActivity
+//                citsGuideDelegate = this@NavigationActivity
+//
+//                binding.naviView.initWithGuidance(
+//                    this,
+//                    trip,
+//                    routeOption!!,
+//                    avoidOption!!
+//                )
+//
+//                binding.naviView.post {
+//                    run {
+//                        if (priRoute == false) {
+//                            changeRoute()
+//                        }
+//                    }
+//                }
+//            }
+//        } else {
+//            SirenApplication.knsdk.sharedGuidance()?.apply {
+//                //  guidance delegate 등록
+//                guideStateDelegate = this@NavigationActivity
+//                locationGuideDelegate = this@NavigationActivity
+//                routeGuideDelegate = this@NavigationActivity
+//                safetyGuideDelegate = this@NavigationActivity
+//                voiceGuideDelegate = this@NavigationActivity
+//                citsGuideDelegate = this@NavigationActivity
+//
+//                binding.naviView.initWithGuidance(this, null, KNRoutePriority.KNRoutePriority_Recommand, KNRouteAvoidOption.KNRouteAvoidOption_None.value)
+//            }
+//        }
 
     }
 

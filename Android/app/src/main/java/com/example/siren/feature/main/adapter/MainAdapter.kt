@@ -5,22 +5,30 @@ import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
 import com.example.siren.databinding.ItemHospitalBinding
+import com.example.siren.model.Emergency
 import com.example.siren.network.response.EmergencyResponse
 import dagger.hilt.android.AndroidEntryPoint
 
 class MainAdapter(
-    private val items: List<EmergencyResponse>,
-    val onClick: (EmergencyResponse) -> Unit
+    val items: List<Emergency>,
+    val onClick: (Emergency) -> Unit
 ) : RecyclerView.Adapter<MainAdapter.ViewHolder>() {
 
     inner class ViewHolder(private val binding: ItemHospitalBinding) :
         RecyclerView.ViewHolder(binding.root) {
-        fun bind(item: EmergencyResponse) {
-            Glide.with(binding.root.context)
-                .load(item)
-                .into(binding.ivImage)
+        fun bind(item: Emergency) {
+            with(binding) {
+                Glide.with(root.context)
+                    .load(item.image)
+                    .into(ivImage)
 
-            binding.ibNavigation.setOnClickListener { onClick.invoke(item) }
+                tvAddress.text = "구지면 창리로 11길 93"
+                tvDistance.text = "${item.distance}km"
+                tvRemainingTime.text = item.remainingTime
+                tvHospitalName.text = item.hospitalName
+
+                ibNavigation.setOnClickListener { onClick.invoke(item) }
+            }
         }
 
     }

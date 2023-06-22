@@ -53,18 +53,6 @@ class IntroActivity : AppCompatActivity() {
             sdkInit()
         }
 
-
-
-//        when {
-//            checkSelfPermission(Manifest.permission.ACCESS_FINE_LOCATION) != PackageManager.PERMISSION_GRANTED ->
-//                makeRequestPermissionGPS()
-//
-//            checkSelfPermission(Manifest.permission.READ_PHONE_STATE) != PackageManager.PERMISSION_GRANTED ->
-//                makeRequestPermissionPhoneState()
-//
-//            else -> sdkInit()
-//        }
-
     }
 
     override fun onRequestPermissionsResult(
@@ -111,65 +99,6 @@ class IntroActivity : AppCompatActivity() {
                     })
             }
         }
-    }
-//
-//    private fun makeRequestPermissionPhoneState() {
-//        if (ActivityCompat.shouldShowRequestPermissionRationale(
-//                this,
-//                Manifest.permission.READ_PHONE_STATE
-//            )
-//        ) {
-//            val builder = AlertDialog.Builder(this)
-//            builder.setMessage("Permission to access the microphone is required for this app to Phone State")
-//                .setTitle("Permission required")
-//
-//            builder.setPositiveButton("OK") { _, _ ->
-//                makeRequestPermission(
-//                    arrayOf(Manifest.permission.READ_PHONE_STATE),
-//                    PERMISSION_PHONE_STATE_REQUEST_CODE
-//                )
-//            }
-//
-//            val dialog = builder.create()
-//            dialog.show()
-//
-//        } else {
-//            makeRequestPermission(
-//                arrayOf(Manifest.permission.READ_PHONE_STATE),
-//                PERMISSION_PHONE_STATE_REQUEST_CODE
-//            )
-//        }
-//    }
-//
-//    private fun makeRequestPermissionGPS() {
-//        if (ActivityCompat.shouldShowRequestPermissionRationale(
-//                this,
-//                Manifest.permission.ACCESS_FINE_LOCATION
-//            )
-//        ) {
-//            val builder = AlertDialog.Builder(this)
-//            builder.setMessage("Permission to access the microphone is required for this app to GPS")
-//                .setTitle("Permission required")
-//
-//            builder.setPositiveButton("OK") { _, _ ->
-//                makeRequestPermission(
-//                    arrayOf(Manifest.permission.ACCESS_FINE_LOCATION),
-//                    PERMISSION_GPS_REQUEST_CODE
-//                )
-//            }
-//
-//            val dialog = builder.create()
-//            dialog.show()
-//        } else {
-//            makeRequestPermission(
-//                arrayOf(Manifest.permission.ACCESS_FINE_LOCATION),
-//                PERMISSION_GPS_REQUEST_CODE
-//            )
-//        }
-//    }
-
-    private fun makeRequestPermission(permissions: Array<String>, requestCode: Int) {
-        ActivityCompat.requestPermissions(this, permissions, requestCode)
     }
 
     companion object {
