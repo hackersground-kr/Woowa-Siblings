@@ -6,7 +6,7 @@
     android:layout_height="match_parent"
     tools:context=".feature.main.MainActivity">
 
-    <com.naver.maps.map.MapView
+    <com.kakaomobility.knsdk.map.knmapview.KNMapView
         android:id="@+id/map_view"
         android:layout_width="match_parent"
         android:layout_height="match_parent" />

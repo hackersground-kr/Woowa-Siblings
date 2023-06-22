@@ -22,11 +22,12 @@
             app:layout_constraintTop_toTopOf="parent">
 
             <ImageView
-                android:id="@+id/img_hospital"
+                android:id="@+id/iv_image"
                 android:layout_width="86dp"
                 android:layout_height="86dp"
                 android:scaleType="centerCrop"
-                android:src="@drawable/sample1" />
+                android:src="@drawable/sample1"
+                tools:ignore="ContentDescription" />
         </androidx.cardview.widget.CardView>
 
         <TextView
@@ -57,7 +58,7 @@
             app:layout_constraintTop_toBottomOf="@+id/tv_hospital_name" />
 
         <TextView
-            android:id="@+id/textView3"
+            android:id="@+id/tv_some"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginStart="10dp"
@@ -106,7 +107,7 @@
             android:textColor="@color/accent_color"
             android:textSize="14sp"
             app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintStart_toEndOf="@+id/textView3"
+            app:layout_constraintStart_toEndOf="@+id/tv_some"
             app:layout_constraintTop_toBottomOf="@+id/tv_address"
             app:layout_constraintVertical_bias="1.0" />
 
@@ -126,7 +127,7 @@
             app:layout_constraintVertical_bias="1.0" />
 
         <ImageButton
-            android:id="@+id/imageButton"
+            android:id="@+id/ib_navigation"
             android:layout_width="50dp"
             android:layout_height="50dp"
             android:layout_margin="8dp"
@@ -134,7 +135,8 @@
             android:src="@drawable/guide"
             app:backgroundTint="@color/accent_color"
             app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintEnd_toEndOf="parent" />
+            app:layout_constraintEnd_toEndOf="parent"
+            tools:ignore="ContentDescription" />
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 
