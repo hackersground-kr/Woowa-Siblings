@@ -16,7 +16,7 @@ struct MainView: View {
         GeometryReader { outsideProxy in
             ZStack {
                 if active {
-                    MapView(active: $active, startDest: "EXCO", startX: 345585.0000016, startY: 267122.999974, endDest: "서문시장", endX: 344661.0000015, endY: 264974.999974)
+                    NavView(active: $active, startDest: "EXCO", startX: 345585.0000016, startY: 267122.999974, endDest: "경북대학교", endX: 344899.540357, endY: 264387.239136)
                         .ignoresSafeArea()
                 } else {
                     VStack {
@@ -111,6 +111,9 @@ struct MainView: View {
             }
             .shadow(color: .black.opacity(0.2), radius: 2, y: 2)
             .shadow(color: .black.opacity(0.1), radius: 6, y: 6)
+        }
+        .onAppear {
+            active = true
         }
     }
 }

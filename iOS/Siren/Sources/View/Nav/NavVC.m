@@ -1,5 +1,5 @@
 //
-//  MapVC.m
+//  NavVC.m
 //  Siren
 //
 //  Created by Mercen on 2023/06/22.
@@ -10,14 +10,14 @@
 #import <KNSDK/KNSDK.h>
 #import <KNSDK/KNNaviView.h>
 
-@interface MapVC : UIViewController
+@interface NavVC : UIViewController
 
 @property KNNaviView *naviView;
 @property (nonatomic, copy) void (^activate)(bool);
 
 @end
 
-@implementation MapVC
+@implementation NavVC
 
 - (void)viewDidLoad {
     [super viewDidLoad];

@@ -1,5 +1,5 @@
 //
-//  MapView.swift
+//  NavView.swift
 //  Siren
 //
 //  Created by Mercen on 2023/06/21.
@@ -7,7 +7,7 @@
 
 import SwiftUI
 
-struct MapView: UIViewControllerRepresentable {
+struct NavView: UIViewControllerRepresentable {
     
     @Binding var active: Bool
     let startDest: String
@@ -19,8 +19,8 @@ struct MapView: UIViewControllerRepresentable {
         self.active = value
     }
     
-    func makeUIViewController(context: Context) -> MapVC {
-        let vc = MapVC()
+    func makeUIViewController(context: Context) -> NavVC {
+        let vc = NavVC()
         vc.startNavigate(withStartDest: startDest,
                          startX: startX,
                          startY: startY,
@@ -31,6 +31,6 @@ struct MapView: UIViewControllerRepresentable {
         return vc
     }
 
-    func updateUIViewController(_ uiViewController: MapVC, context: Context) {
+    func updateUIViewController(_ uiViewController: NavVC, context: Context) {
     }
 }
