@@ -113,12 +113,16 @@ iOS 디바이스로 화면에 나온 QR코드를 인식하고 로그인하면 �
 <img width="579" alt="스크린샷 2023-06-23 00 55 21" src="https://github.com/hackersground-kr/Woowa-Siblings/assets/100567149/3ddcf063-5a63-4c4a-a7dc-27f9d5f78c79">
 
 3. 안드로이드 프로젝트로 들어가 앱 단위의 build.gradle에 아래 dependency를 추가한다.
+<img width="417" alt="스크린샷 2023-06-23 06 47 48" src="https://github.com/hackersground-kr/Woowa-Siblings/assets/100567149/147e6bb5-0c9c-43ec-82d4-6e6a620144e2">
 <img width="543" alt="스크린샷 2023-06-23 00 56 52" src="https://github.com/hackersground-kr/Woowa-Siblings/assets/100567149/330d1d00-bb91-412e-bce2-70814281dd34">
+<img width="753" alt="스크린샷 2023-06-23 06 48 24" src="https://github.com/hackersground-kr/Woowa-Siblings/assets/100567149/1bd3cc5e-9e35-4f23-a9f7-548c9147f35d">
+
 
 4. MainActivity로 가서 onCreate() 함수 내에 아래 코드를 추가한다. (두 번째 인자에는 자신의 app secret을 적는다.)
 <img width="553" alt="스크린샷 2023-06-23 00 56 42![Uploading marker.svg…]()
 " src="https://github.com/hackersground-kr/Woowa-Siblings/assets/100567149/1e3a4a94-e7a4-4a04-a9b7-5a9b119119e4">
 <img width="653" alt="스크린샷 2023-06-23 01 05 27" src="https://github.com/hackersground-kr/Woowa-Siblings/assets/100567149/8e46e3b7-d036-4282-9460-e710e5bd9a61">
+
 App Center의 Overview에서 등록한 안드로이드 앱의 app secret을 확인할 수 있다.)
 
 5. Generate Signed Bundle/Apk 를 클릭하고 Android App Bundle을 선택한다.
