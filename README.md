@@ -106,28 +106,40 @@ iOS 디바이스로 화면에 나온 QR코드를 인식하고 로그인하면 �
 > > - iOS :
 
 > android :
-1. [App Center](https://appcenter.ms/apps) 에 접속해서 로그인한다.
-2. Add new app 버튼을 누르고 `App name`, `Release Type`, `Icon`, `OS`, `Platform`을 선택한 후 Add new app을 클릭한다.
-3. 안드로이드 프로젝트의 app/build.gralde에 아래 epicenter dependency를 추가한 뒤 sync 한다.
-```
-dependencies {
-    def appCenterSdkVersion = '4.4.5'
-    implementation "com.microsoft.appcenter:appcenter-analytics:${appCenterSdkVersion}"
-    implementation "com.microsoft.appcenter:appcenter-crashes:${appCenterSdkVersion}"
-}
+1. [App Center](https://appcenter.ms/apps) 에 접속해서 로그인한 후 Add new app을 누른다.
+<img width="589" alt="스크린샷 2023-06-23 00 55 03" src="https://github.com/hackersground-kr/Woowa-Siblings/assets/100567149/d9ead861-caa6-4537-8a49-94c61de5d1b8">
 
-```
-4. MainActivity의 `onCreate()` 에 아래 코드를 추가한다.
-두번째 인자에는 App Center에서 발급해준 `app secret`을 적는다.
-``` 
-AppCenter.start(application, "{Your app secret here}",
-                  Analytics.class, Crashes.class);
-```
-5. 안드로이드 프로젝트에서 Generate Signed Bundle or Apk를 클릭해서 Android App Bundle을 선택한 후 NEXT를 누른다.
-6. 프로젝트의 Key store path를 등록하고 Key password와 Key Store password를 입력한 후 NEXT를 누른다.
-7. `release`를 선택한 후 Create를 눌러 aab 파일을 생성한다.
-8. App Center의 Distribute에 들어가서 New release를 클릭한 후 app/release 디렉터리에 있는 aab 파일을 등록한다.
+2. `App name`, `Release Type`, `Icon`, `OS`, `Platform`을 선택한 후 Add new app을 클릭한다.
+<img width="579" alt="스크린샷 2023-06-23 00 55 21" src="https://github.com/hackersground-kr/Woowa-Siblings/assets/100567149/3ddcf063-5a63-4c4a-a7dc-27f9d5f78c79">
+
+3. 안드로이드 프로젝트로 들어가 앱 단위의 build.gradle에 아래 dependency를 추가한다.
+<img width="543" alt="스크린샷 2023-06-23 00 56 52" src="https://github.com/hackersground-kr/Woowa-Siblings/assets/100567149/330d1d00-bb91-412e-bce2-70814281dd34">
+
+4. MainActivity로 가서 onCreate() 함수 내에 아래 코드를 추가한다. (두 번째 인자에는 자신의 app secret을 적는다.)
+<img width="553" alt="스크린샷 2023-06-23 00 56 42![Uploading marker.svg…]()
+" src="https://github.com/hackersground-kr/Woowa-Siblings/assets/100567149/1e3a4a94-e7a4-4a04-a9b7-5a9b119119e4">
+<img width="653" alt="스크린샷 2023-06-23 01 05 27" src="https://github.com/hackersground-kr/Woowa-Siblings/assets/100567149/8e46e3b7-d036-4282-9460-e710e5bd9a61">
+App Center의 Overview에서 등록한 안드로이드 앱의 app secret을 확인할 수 있다.)
+
+5. Generate Signed Bundle/Apk 를 클릭하고 Android App Bundle을 선택한다.
+<img width="624" alt="스크린샷 2023-06-23 00 57 09" src="https://github.com/hackersground-kr/Woowa-Siblings/assets/100567149/2ab71c4d-ebd0-4712-be12-b3da56e4a29b">
+
+6. Create New를 클릭해서 앱 배포를 위한 key store path를 등록한다.
+<img width="624" alt="스크린샷 2023-06-23 00 57 33" src="https://github.com/hackersground-kr/Woowa-Siblings/assets/100567149/15336d57-5b2f-40b4-a3aa-9c494dd83270">
+
+7. 등록한 key store의 비밀번호를 입력한다.
+<img width="724" alt="스크린샷 2023-06-23 00 57 40" src="https://github.com/hackersground-kr/Woowa-Siblings/assets/100567149/fca2f7bd-5f49-4d72-a235-71847fedeace">
+
+8. debug와 release 중 release를 선택하고 CREATE를 클릭한다.
+<img width="724" alt="스크린샷 2023-06-23 00 57 43" src="https://github.com/hackersground-kr/Woowa-Siblings/assets/100567149/87baf5df-3646-4479-b365-0237dd549432">
+
+9. App Center로 돌아가 Distribute 페이지에 있는 New Release를 선택한 후 아까 추출한 aab 파일을 넣는다.
+<img width="578" alt="스크린샷 2023-06-23 00 58 28" src="https://github.com/hackersground-kr/Woowa-Siblings/assets/100567149/43853db2-f13c-4097-8f09-e80f0c453a7f">
+
+10. release note를 입력한 후 앱을 등록한다.
+<img width="1066" alt="스크린샷 2023-06-23 01 15 10" src="https://github.com/hackersground-kr/Woowa-Siblings/assets/100567149/7b8d4c3b-0409-4f49-9a32-99e935c5941f">
 > - backend :
+
 
 Azure App Service에 가서, 새로운 웹 앱을 만듭니다.
 본인의 사정에 맞게 기본 설정을 합니다. (본인은 게시 : 코드, 런타임 스택 : Java 17, 운영 체제 : Linux로 설정)
