@@ -3,8 +3,6 @@ package com.example.siren.network.response
 import com.google.gson.annotations.SerializedName
 
 data class EmergencyResponse(
-    @SerializedName("hospitalCode")
-    val hospitalCode: String,
     @SerializedName("hospitalName")
     val hospitalName: String,
     @SerializedName("telephone")

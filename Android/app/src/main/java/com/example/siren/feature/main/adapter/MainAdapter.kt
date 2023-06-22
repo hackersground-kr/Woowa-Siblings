@@ -3,31 +3,32 @@ package com.example.siren.feature.main.adapter
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
-import com.bumptech.glide.Glide
 import com.example.siren.databinding.ItemHospitalBinding
-import com.example.siren.model.Emergency
+import com.example.siren.model.Distance
+import com.example.siren.network.response.CoordinateResponse
 import com.example.siren.network.response.EmergencyResponse
-import dagger.hilt.android.AndroidEntryPoint
 
 class MainAdapter(
-    val items: List<Emergency>,
-    val onClick: (Emergency) -> Unit
+//    val distanceList: List<Distance>,
+    val emergencyList: List<EmergencyResponse>,
+    val coordinateList: List<CoordinateResponse>,
+    val onClick: (/*Distance, */EmergencyResponse, CoordinateResponse) -> Unit
 ) : RecyclerView.Adapter<MainAdapter.ViewHolder>() {
 
     inner class ViewHolder(private val binding: ItemHospitalBinding) :
         RecyclerView.ViewHolder(binding.root) {
-        fun bind(item: Emergency) {
+        fun bind(/*distance: Distance, */emergency: EmergencyResponse, coordinate: CoordinateResponse) {
             with(binding) {
-                Glide.with(root.context)
-                    .load(item.image)
-                    .into(ivImage)
+//                Glide.with(root.context)
+//                    .load(item.image)
+//                    .into(ivImage)
 
-                tvAddress.text = "구지면 창리로 11길 93"
-                tvDistance.text = "${item.distance}km"
-                tvRemainingTime.text = item.remainingTime
-                tvHospitalName.text = item.hospitalName
+                tvAddress.text = coordinate.dutyAddr
+//                tvDistance.text = distance.distance + "km"
+//                tvRemainingTime.text = distance.remainingTime
+                tvHospitalName.text = coordinate.dutyName
 
-                ibNavigation.setOnClickListener { onClick.invoke(item) }
+                ibNavigation.setOnClickListener { onClick.invoke(/*distance, */emergency, coordinate) }
             }
         }
 
@@ -39,10 +40,10 @@ class MainAdapter(
     }
 
     override fun onBindViewHolder(holder: ViewHolder, position: Int) {
-        holder.bind(items[position])
+        holder.bind(/*distanceList[position],*/ emergencyList[position], coordinateList[position])
     }
 
     override fun getItemCount(): Int {
-        return items.size
+        return emergencyList.size
     }
 }

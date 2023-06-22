@@ -1,29 +1,27 @@
 package com.example.siren.feature.main
 
+import android.Manifest
 import android.content.Intent
+import android.content.pm.PackageManager
+import android.location.Location
 import android.os.Bundle
 import android.view.Gravity
 import android.widget.Toast
 import androidx.activity.viewModels
 import androidx.appcompat.app.AppCompatActivity
+import androidx.core.app.ActivityCompat
 import androidx.lifecycle.lifecycleScope
 import androidx.viewpager2.widget.ViewPager2
 import com.example.siren.R
 import com.example.siren.databinding.ActivityMainBinding
 import com.example.siren.feature.main.adapter.MainAdapter
 import com.example.siren.feature.navigation.NavigationActivity
-import com.example.siren.model.Emergency
+import com.example.siren.model.Distance
+import com.example.siren.network.response.CoordinateResponse
 import com.example.siren.network.response.EmergencyResponse
 import com.example.siren.util.HorizontalMarginItemDecoration
-import com.example.siren.util.SirenApplication
-import com.kakaomobility.knsdk.KNLanguageType
-import com.kakaomobility.knsdk.KNSDK
-import com.kakaomobility.knsdk.common.gps.KN_DEFAULT_POS_X
-import com.kakaomobility.knsdk.common.gps.KN_DEFAULT_POS_Y
-import com.kakaomobility.knsdk.common.gps.WGS84ToKATEC
-import com.kakaomobility.knsdk.common.util.FloatPoint
-import com.kakaomobility.knsdk.map.knmaprenderer.objects.KNMapCameraUpdate
-import com.kakaomobility.knsdk.map.uicustomsupport.renewal.KNMapMarker
+import com.google.android.gms.location.FusedLocationProviderClient
+import com.google.android.gms.location.LocationServices
 import com.microsoft.appcenter.AppCenter
 import com.microsoft.appcenter.analytics.Analytics
 import com.microsoft.appcenter.crashes.Crashes
@@ -44,13 +42,16 @@ class MainActivity : AppCompatActivity(), OnMapReadyCallback {
     private val binding: ActivityMainBinding by lazy { ActivityMainBinding.inflate(layoutInflater) }
     private lateinit var naverMap: NaverMap
     private lateinit var mainAdapter: MainAdapter
+    private val fusedLocationClient: FusedLocationProviderClient by lazy { LocationServices.getFusedLocationProviderClient(this) }
     private val viewModel: MainViewModel by viewModels()
+    private val distanceList =  mutableListOf<Distance>()
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(binding.root)
         initMapView(savedInstanceState)
         initViewPager()
+        collectViewModel()
 
         AppCenter.start(
             application, "76cc6612-5ef5-4b0c-b751-8d8f3adcafdf",
@@ -58,45 +59,39 @@ class MainActivity : AppCompatActivity(), OnMapReadyCallback {
         )
     }
 
-    private fun initViewPager() = with(binding.viewPager) {
-//        lifecycleScope.launch {
-//            viewModel.emergency.collect { data ->
-//                adapter = MainAdapter(data) {
-//                    startActivity(
-//                        Intent(
-//                            this@MainActivity,
-//                            NavigationActivity::class.java
-//                        ).apply {
-//                        }
-//                    )
-//                }
-//            }
-//        }
-
-        val sample = listOf(
-            Emergency(128.60431466100363, 35.866235497221616, "https://i.namu.wiki/i/iDpaSp3m9aOqZ83UQat5MqMefX6j4gXVBiYLpeXS1DebFegakg1g1P-5sFkrRSLEjvWbbagu43iXppk7xrJ5FLG5ZL2xyRDwxxlr3yINXljaDIGT3f2MfIJaXkVNIGZQ7d0O8LSgF6FGymOmwdmRDg.webp", "4.3", "3분", "1", "경북대학교병원", "053-1234-1234", "0", "0", "0", "0", "0", "0", "0", "0", "0", "0", "0"),
-            Emergency(128.56409603929066, 35.95681747386846, "https://i.namu.wiki/i/ckN8KvXPTsdhn3MoaQA6FIXnc_UtHASdRJKRCqZj7WgNiQyoNo7X0avYCiu2nJN4jPH1EvWweUeid5oh-ADPLU9TpPuMJsO7LDopA7ENlul0atTw8BDWHKvcRGOxqXiINjtsCDkaR-RIc-ZbajRFGw.webp", "7.9", "20분", "2", "칠곡경대병원", "053-4132-1243", "0", "0", "0", "0", "0", "0", "0", "0", "0", "0", "0")
-        )
-
-        mainAdapter = MainAdapter(sample) {
-            startActivity(
-                Intent(
-                    this@MainActivity,
-                    NavigationActivity::class.java
-                ).apply {
-                    putExtra("startName", sample[0].hospitalName)
-                    putExtra("goalName", sample[1].hospitalName)
-                    putExtra("startLongitude", sample[0].longitude)
-                    putExtra("goalLongitude", sample[1].longitude)
-                    putExtra("startLatitude", sample[0].latitude)
-                    putExtra("goalLatitude", sample[1].latitude)
+    private fun collectViewModel() {
+        lifecycleScope.launch {
+            launch {
+                viewModel.emergency.collect { emergencyList ->
+                    launch {
+                        viewModel.coordinate.collect { coordinateList ->
+                            if (emergencyList.isNotEmpty() && coordinateList.isNotEmpty()) {
+                                mainAdapter = MainAdapter(/*distanceList,*/ emergencyList, coordinateList) {/* distance,*/ emergency, coordinate ->
+                                    startActivity(
+                                        Intent(
+                                            this@MainActivity,
+                                            NavigationActivity::class.java
+                                        ).apply {
+//                                putExtra("")
+                                        }
+                                    )
+                                }
+                                binding.viewPager.adapter = mainAdapter
+                                setMarker(coordinateList)
+                            }
+                        }
+                    }
                 }
-            )
+            }
+            launch {
+                viewModel.error.collect {
+                    Toast.makeText(this@MainActivity, it, Toast.LENGTH_SHORT).show()
+                }
+            }
         }
+    }
 
-        adapter = mainAdapter
-
-//        setMarker(sample)
+    private fun initViewPager() = with(binding.viewPager) {
 
         offscreenPageLimit = 3
         setPadding(50, 0, 50, 100)
@@ -120,28 +115,22 @@ class MainActivity : AppCompatActivity(), OnMapReadyCallback {
 
     }
 
-
     private fun initMapView(savedInstanceState: Bundle?) {
         with(binding) {
             mapView.onCreate(savedInstanceState)
             mapView.getMapAsync(this@MainActivity)
-
-
         }
     }
 
-    private fun setMarker() {
-        val sample = listOf(
-            Emergency(128.60431466100363, 35.866235497221616, "https://i.namu.wiki/i/iDpaSp3m9aOqZ83UQat5MqMefX6j4gXVBiYLpeXS1DebFegakg1g1P-5sFkrRSLEjvWbbagu43iXppk7xrJ5FLG5ZL2xyRDwxxlr3yINXljaDIGT3f2MfIJaXkVNIGZQ7d0O8LSgF6FGymOmwdmRDg.webp", "4.3", "3분", "1", "경북대학교병원", "053-1234-1234", "0", "0", "0", "0", "0", "0", "0", "0", "0", "0", "0"),
-            Emergency(128.56409603929066, 35.95681747386846, "https://i.namu.wiki/i/ckN8KvXPTsdhn3MoaQA6FIXnc_UtHASdRJKRCqZj7WgNiQyoNo7X0avYCiu2nJN4jPH1EvWweUeid5oh-ADPLU9TpPuMJsO7LDopA7ENlul0atTw8BDWHKvcRGOxqXiINjtsCDkaR-RIc-ZbajRFGw.webp", "7.9", "20분", "2", "칠곡경대병원", "053-4132-1243", "0", "0", "0", "0", "0", "0", "0", "0", "0", "0", "0")
-        ).forEach { emergency ->
+    private fun setMarker(list: List<CoordinateResponse>) {
+        list.forEach { coordinate ->
 
             val marker = Marker()
 
-            marker.position = LatLng(emergency.latitude, emergency.longitude)
+            marker.position = LatLng(coordinate.wgs84Lat, coordinate.wgs84Lon)
 
             marker.map = naverMap
-            marker.tag = emergency.hospitalCode
+            marker.tag = coordinate.hpid
             marker.icon = OverlayImage.fromResource(R.drawable.marker)
 
             marker.setOnClickListener {
@@ -162,16 +151,44 @@ class MainActivity : AppCompatActivity(), OnMapReadyCallback {
             isZoomControlEnabled = false
         }
 
-        setMarker()
+        var currentLocation: Location?
+        if (ActivityCompat.checkSelfPermission(
+                this,
+                Manifest.permission.ACCESS_FINE_LOCATION
+            ) != PackageManager.PERMISSION_GRANTED && ActivityCompat.checkSelfPermission(
+                this,
+                Manifest.permission.ACCESS_COARSE_LOCATION
+            ) != PackageManager.PERMISSION_GRANTED
+        ) {
+            return
+        }
+        fusedLocationClient.lastLocation
+            .addOnSuccessListener { location: Location? ->
+                currentLocation = location
+
+                naverMap.locationOverlay.run {
+                    isVisible = true
+                    position = LatLng(currentLocation!!.latitude, currentLocation!!.longitude)
+                }
+
+                val cameraUpdate = CameraUpdate.scrollTo(
+                    LatLng(
+                        currentLocation!!.latitude,
+                        currentLocation!!.longitude
+                    )
+                )
+                naverMap.moveCamera(cameraUpdate)
+
+            }
 
         binding.viewPager.registerOnPageChangeCallback(object : ViewPager2.OnPageChangeCallback() {
             override fun onPageSelected(position: Int) {
                 super.onPageSelected(position)
 
                 CoroutineScope(Dispatchers.Default).launch {
-                    val selectedCompanyModel = mainAdapter.items[position]
+                    val selectedEmergency = mainAdapter.coordinateList[position]
                     val cameraUpdate = CameraUpdate
-                        .scrollAndZoomTo(LatLng(selectedCompanyModel.latitude, selectedCompanyModel.longitude), 15.0)
+                        .scrollAndZoomTo(LatLng(selectedEmergency.wgs84Lat, selectedEmergency.wgs84Lon), 15.0)
                         .animate(CameraAnimation.Easing)
                     naverMap.moveCamera(cameraUpdate)
                 }
