@@ -21,18 +21,9 @@ jobs:
         with:
           java-version: '17'
           
-      - name: Make Directory
-        run: mkdir -p server/src/main/resources
-          
-      - name: test
-        run: |
-          cd server/src/main/resources
-          ls
-          
       - uses: actions/checkout@v3
-      - run: |
-          ls
-          touch server/src/main/resources/application.properties
+      - run: mkdir -p server/src/main/resources
+      - run: touch server/src/main/resources/application.properties
       - run: echo "${{ secrets.APPLICATION }}" > ./server/src/main/resources/application.properties
       - run: cat ./server/src/main/resources/application.properties
       - uses: actions/upload-artifact@v2
