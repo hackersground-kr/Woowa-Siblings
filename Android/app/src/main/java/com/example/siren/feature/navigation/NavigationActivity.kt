@@ -30,14 +30,15 @@ import com.kakaomobility.knsdk.trip.kntrip.knroute.KNRoute
 import com.kakaomobility.knsdk.ui.component.MapViewCameraMode
 import com.kakaomobility.knsdk.ui.view.KNNaviView_GuideStateDelegate
 import com.kakaomobility.knsdk.ui.view.KNNaviView_StateDelegate
+import dagger.hilt.android.AndroidEntryPoint
 
+@AndroidEntryPoint
 class NavigationActivity : AppCompatActivity(), KNNaviView_StateDelegate,
     KNNaviView_GuideStateDelegate,
     KNGuidance_GuideStateDelegate, KNGuidance_LocationGuideDelegate, KNGuidance_RouteGuideDelegate,
     KNGuidance_SafetyGuideDelegate, KNGuidance_VoiceGuideDelegate, KNGuidance_CitsGuideDelegate {
 
     private val binding: ActivityNavigationBinding by lazy { ActivityNavigationBinding.inflate(layoutInflater) }
-    private var guidestate = KNGuideState.KNGuideState_Init
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -64,7 +65,6 @@ class NavigationActivity : AppCompatActivity(), KNNaviView_StateDelegate,
 
         if (trip != null) {
             SirenApplication.knsdk.sharedGuidance()?.apply {
-                //  guidance delegate 등록
                 guideStateDelegate = this@NavigationActivity
                 locationGuideDelegate = this@NavigationActivity
                 routeGuideDelegate = this@NavigationActivity
@@ -101,7 +101,6 @@ class NavigationActivity : AppCompatActivity(), KNNaviView_StateDelegate,
             }
         }
 
-//        startForegroundService(this, "길안내 주행중", "빠르고 즐거운 운전, 카카오내비")
     }
 
     override fun didUpdateCitsGuide(aGuidance: KNGuidance, aCitsGuide: KNGuide_Cits) {
@@ -206,24 +205,4 @@ class NavigationActivity : AppCompatActivity(), KNNaviView_StateDelegate,
     override fun naviViewDidUpdateUseDarkMode(aMode: Boolean) {
     }
 
-//    private fun startForegroundService(context : Context, title : String, content : String) {
-//        val bundle = Bundle().apply {
-//            putString("title", title)
-//            putString("content", content)
-//        }
-//
-//        val intent = Intent(context, KNSampleService::class.java).apply {
-//            putExtra(KNSampleService.EXTRA_BUNDLE, bundle)
-//        }
-//
-//        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {
-//            context.startForegroundService(intent)
-//        } else {
-//            context.startService(intent)
-//        }
-//    }
-//
-//    private fun stopForegroundService(context : Context) {
-//        context.stopService(Intent(context, KNSampleService::class.java))
-//    }
 }

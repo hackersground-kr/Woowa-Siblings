@@ -15,8 +15,10 @@ import com.example.siren.feature.main.MainActivity
 import com.example.siren.util.SirenApplication
 import com.kakaomobility.knsdk.KNLanguageType
 import com.kakaomobility.knsdk.common.objects.KNError_Code_C302
+import dagger.hilt.android.AndroidEntryPoint
 import kotlinx.coroutines.launch
 
+@AndroidEntryPoint
 class IntroActivity : AppCompatActivity() {
     private val binding: ActivityIntroBinding by lazy { ActivityIntroBinding.inflate(layoutInflater) }
 

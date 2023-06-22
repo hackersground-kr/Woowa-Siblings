@@ -11,9 +11,11 @@ import com.kakaomobility.knsdk.KNRoutePriority
 import com.kakaomobility.knsdk.KNSDK
 import com.kakaomobility.knsdk.KNSDKDelegate
 import com.kakaomobility.knsdk.trip.kntrip.KNTrip
+import dagger.hilt.android.HiltAndroidApp
 import java.util.UUID
 import java.util.concurrent.ConcurrentHashMap
 
+@HiltAndroidApp
 class SirenApplication : Application(), LifecycleObserver {
     companion object {
         lateinit var instance: SirenApplication
