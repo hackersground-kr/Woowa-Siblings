@@ -8,11 +8,20 @@
 import SwiftUI
 
 struct DetailView: View {
+    
+    let data: Emergency
+    let coordinate: Coordinate
+    let room = ["응급실", "수술실", "일반중환자실", "흉부중환자실", "내과중환자실", "신경중환자실", "신생아중환자실", "입원실", "외과입원실", "신경과입원실", "신경외과중환자실"]
+    func getRoomInfo() -> [String] {
+        [data.emergencyRoom, data.operatingRoom, data.geIntensiveCareUnit, data.thIntensiveCareUnit, data.intensiveCareUnit, data.neurologicalIntensiveCareUnit,
+         data.neonatalIntensiveCareUnit, data.neurosurgeryIntensiveCareUnit, data.inpatientRoom, data.surgicalInpatientRoom, data.neurologyInpatientRoom]
+    }
+
     var body: some View {
         VStack(spacing: 7) {
             VStack(alignment: .leading, spacing: 9) {
                 HStack(spacing: 0) {
-                    Text("경북대학교병원")
+                    Text(data.hospitalName)
                         .font(.system(size: 24, weight: .bold))
                     Spacer()
                     Text("4.7km")
@@ -24,10 +33,10 @@ struct DetailView: View {
                         .clipShape(Capsule())
                 }
                 HStack(spacing: 0) {
-                    Text("대구광역시 중구 동덕로 130 (삼덕동2가)")
+                    Text(coordinate.dutyAddr)
                         .foregroundColor(.gray)
                     Spacer()
-                    Text("053-200-5100")
+                    Text(coordinate.dutyTel1)
                         .underline()
                         .foregroundColor(.accentColor)
                 }
@@ -37,26 +46,28 @@ struct DetailView: View {
                     .padding(.top, 21)
             }
             .padding(.horizontal, 20)
+            
             ScrollView(.horizontal, showsIndicators: false) {
-                HStack {
-                    VStack(alignment: .leading, spacing: 5) {
-                        Color.gray
-                            .frame(width: 24, height: 24)
-                        HStack(alignment: .bottom, spacing: 0) {
-                            Text("응급실 ")
-                                .font(.system(size: 14, weight: .medium))
-                            Text("8")
-                                .font(.system(size: 14, weight: .bold))
-                                .foregroundColor(.accentColor)
-                            Text("자리")
-                                .font(.system(size: 14, weight: .medium))
+                ForEach(zip(room, getRoomInfo()), id: \.self) { item in
+                    HStack {
+                        VStack(alignment: .leading, spacing: 5) {
+                            Color.gray
+                                .frame(width: 24, height: 24)
+                            HStack(alignment: .bottom, spacing: 0) {
+                                Text("\(item[0]) ")
+                                    .font(.system(size: 14, weight: .medium))
+                                Text("\(item[1])")
+                                    .font(.system(size: 14, weight: .bold))
+                                    .foregroundColor(.accentColor)
+                                Text("자리")
+                                    .font(.system(size: 14, weight: .medium))
+                            }
                         }
+                        .padding(.horizontal, 11)
+                        .padding(.vertical, 5)
+                        .overlay(RoundedRectangle(cornerRadius: 10)
+                            .strokeBorder(Color.gray.opacity(0.5), lineWidth: 1))
                     }
-                    .padding(.horizontal, 11)
-                    .padding(.vertical, 5)
-                    .overlay(RoundedRectangle(cornerRadius: 10)
-                        .strokeBorder(Color.gray.opacity(0.5), lineWidth: 1))
-                    
                 }
                 .padding(.horizontal, 20)
             }
@@ -95,11 +106,5 @@ struct DetailView: View {
             }
             .padding(.horizontal, 20)
         }
-    }
-}
-
-struct DetailView_Previews: PreviewProvider {
-    static var previews: some View {
-        DetailView()
     }
 }

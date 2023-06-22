@@ -18,11 +18,11 @@ struct MainView: View {
             if viewModel.active {
                 NavView(active: $viewModel.active,
                         startDest: "현재 위치",
-                        startX: viewModel.startX,
-                        startY: viewModel.startY,
-                        endDest: "경북대학교",
-                        endX: 344899.540357,
-                        endY: 264387.239136)
+                        startX: locationManager.userLatitude,
+                        startY: locationManager.userLongitude,
+                        endDest: "도착 위치",
+                        endX: viewModel.startX,
+                        endY: viewModel.startY)
                     .ignoresSafeArea()
             } else {
                 ZStack {
@@ -32,7 +32,7 @@ struct MainView: View {
                         Spacer()
                         ScrollView(.horizontal, showsIndicators: false) {
                             HStack(spacing: 10) {
-                                ForEach(0..<5) { idx in
+                                ForEach(viewModel.coordinates, id: \.self) { coordinate in
                                     VStack {
                                         Spacer()
                                         GeometryReader { insideProxy in
@@ -44,9 +44,10 @@ struct MainView: View {
                                                 ZStack(alignment: .bottomLeading) {
                                                     VStack(alignment: .leading, spacing: 3) {
                                                         HStack(spacing: 4) {
-                                                            Text("경북대학교병원")
+                                                            Text(coordinate.dutyName)
                                                                 .font(.system(size: 16, weight: .bold))
-                                                            Text("1.1km")
+                                                            Text(viewModel.getInfo(locationManager.userLatitude, locationManager.userLongitude,
+                                                                                   coordinate.wgs84Lon, coordinate.wgs84Lat)[0])
                                                                 .font(.system(size: 12, weight: .bold))
                                                                 .foregroundColor(.white)
                                                                 .padding(.horizontal, 5)
@@ -54,7 +55,7 @@ struct MainView: View {
                                                                 .background(Color.accentColor)
                                                                 .clipShape(Capsule())
                                                         }
-                                                        Text("대구광역시 중구 동덕로 130 (삼덕동2가)")
+                                                        Text(coordinate.dutyAddr)
                                                             .font(.system(size: 12, weight: .medium))
                                                             .foregroundColor(.gray)
                                                         Spacer()
@@ -62,7 +63,8 @@ struct MainView: View {
                                                     HStack(alignment: .bottom, spacing: 3) {
                                                         Text("약")
                                                             .font(.system(size: 12, weight: .medium))
-                                                        Text("1분")
+                                                        Text(viewModel.getInfo(locationManager.userLatitude, locationManager.userLongitude,
+                                                                               coordinate.wgs84Lon, coordinate.wgs84Lat)[1])
                                                             .font(.system(size: 14, weight: .bold))
                                                             .foregroundColor(.accentColor)
                                                         Text("소요 예정")
@@ -101,7 +103,6 @@ struct MainView: View {
                                         .frame(width: outsideProxy.frame(in: .global).width - 40,
                                                height: 102)
                                     }
-                                    .id(idx)
                                 }
                                 .frame(height: 124)
                             }
