@@ -24,7 +24,6 @@ class MainViewModel: ObservableObject {
                          .get,
                          [Coordinate].self)
         { data in
-            print("asifqwfiqw")
             self.coordinates = data
         }
     }
