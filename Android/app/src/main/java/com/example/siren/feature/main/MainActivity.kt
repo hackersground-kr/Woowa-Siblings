@@ -43,7 +43,7 @@ class MainActivity : AppCompatActivity(), OnMapReadyCallback {
     private lateinit var naverMap: NaverMap
     private lateinit var mainAdapter: MainAdapter
     private val fusedLocationClient: FusedLocationProviderClient by lazy { LocationServices.getFusedLocationProviderClient(this) }
-    private val viewModel: SirenViewModel by viewModels()
+    private val viewModel: MainViewModel by viewModels()
     private val distanceList =  mutableListOf<Distance>()
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -75,7 +75,7 @@ class MainActivity : AppCompatActivity(), OnMapReadyCallback {
                                                 this@MainActivity,
                                                 DetailActivity::class.java
                                             ).apply {
-                                                putExtra("hpName", coordinate.dutyName)
+                                                putExtra("hpName", coordinate.hospitalName)
                                             }
                                         )
                                     }, {
@@ -139,14 +139,21 @@ class MainActivity : AppCompatActivity(), OnMapReadyCallback {
 
             val marker = Marker()
 
-            marker.position = LatLng(coordinate.wgs84Lat, coordinate.wgs84Lon)
+            marker.position = LatLng(coordinate.wgs84x, coordinate.wgs84y)
 
             marker.map = naverMap
-            marker.tag = coordinate.hpid
+            marker.tag = coordinate.hospitalCode
             marker.icon = OverlayImage.fromResource(R.drawable.marker)
 
             marker.setOnClickListener {
-
+                startActivity(
+                    Intent(
+                        this@MainActivity,
+                        DetailActivity::class.java
+                    ).apply {
+                        putExtra("hpName", coordinate.hospitalName)
+                    }
+                )
                 true
             }
         }
@@ -200,7 +207,7 @@ class MainActivity : AppCompatActivity(), OnMapReadyCallback {
                 CoroutineScope(Dispatchers.Default).launch {
                     val selectedEmergency = mainAdapter.coordinateList[position]
                     val cameraUpdate = CameraUpdate
-                        .scrollAndZoomTo(LatLng(selectedEmergency.wgs84Lat, selectedEmergency.wgs84Lon), 15.0)
+                        .scrollAndZoomTo(LatLng(selectedEmergency.wgs84x, selectedEmergency.wgs84y), 15.0)
                         .animate(CameraAnimation.Easing)
                     naverMap.moveCamera(cameraUpdate)
                 }

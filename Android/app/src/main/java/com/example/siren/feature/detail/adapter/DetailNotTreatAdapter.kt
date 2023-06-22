@@ -4,21 +4,19 @@ import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 import com.example.siren.databinding.ItemDontcheckBinding
-import com.example.siren.databinding.ItemEmergencyRoomBinding
-import com.example.siren.network.response.EmergencyResponse
-import com.example.siren.network.response.Response
+import com.example.siren.network.response.MessageResponse
 
 
 class DetailNotTreatAdapter(
-    private val items: List<String>
+    private val items: List<MessageResponse>
 ) : RecyclerView.Adapter<DetailNotTreatAdapter.ViewHolder>() {
 
     inner class ViewHolder(private val binding: ItemDontcheckBinding) :
         RecyclerView.ViewHolder(binding.root) {
-        fun bind(item: String) {
+        fun bind(item: MessageResponse) {
             with(binding) {
-//                .text = item.split(" ").last()
-//                tvState.text = item.split(" ").first()
+                tvState.text = item.itemType
+                tvContent.text = item.messageText
             }
         }
     }

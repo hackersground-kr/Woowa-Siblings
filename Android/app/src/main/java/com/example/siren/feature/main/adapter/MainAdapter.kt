@@ -3,8 +3,8 @@ package com.example.siren.feature.main.adapter
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
+import com.bumptech.glide.Glide
 import com.example.siren.databinding.ItemHospitalBinding
-import com.example.siren.model.Distance
 import com.example.siren.network.response.CoordinateResponse
 import com.example.siren.network.response.EmergencyResponse
 
@@ -20,14 +20,14 @@ class MainAdapter(
         RecyclerView.ViewHolder(binding.root) {
         fun bind(/*distance: Distance, */emergency: EmergencyResponse, coordinate: CoordinateResponse) {
             with(binding) {
-//                Glide.with(root.context)
-//                    .load(item.image)
-//                    .into(ivImage)
+                Glide.with(root.context)
+                    .load(emergency.imageUrl)
+                    .into(ivImage)
 
-                tvAddress.text = coordinate.dutyAddr
+                tvAddress.text = coordinate.hospitalAddress
 //                tvDistance.text = distance.distance + "km"
 //                tvRemainingTime.text = distance.remainingTime
-                tvHospitalName.text = coordinate.dutyName
+                tvHospitalName.text = coordinate.hospitalName
 
                 binding.root.setOnClickListener { onClick.invoke(coordinate) }
                 ibNavigation.setOnClickListener { onClickNavigation.invoke(coordinate) }

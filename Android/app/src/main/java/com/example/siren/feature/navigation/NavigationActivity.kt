@@ -56,10 +56,10 @@ class NavigationActivity : AppCompatActivity(), KNNaviView_StateDelegate,
             carType = carTypeWithIdx(SirenApplication.prefs.getCarType())
         }
 
-//        val avoidOption = intent?.getIntExtra("start", 0)
-//        val routeOption = intent?.getSerializableExtra("routeOption") as KNRoutePriority?
-//        val priRoute = intent?.getBooleanExtra("priRoute", true)
-//        val key = intent?.getStringExtra("tripKey")
+        val avoidOption = intent?.getIntExtra("start", 0)
+        val routeOption = intent?.getSerializableExtra("routeOption") as KNRoutePriority?
+        val priRoute = intent?.getBooleanExtra("priRoute", true)
+        val key = intent?.getStringExtra("tripKey")
 
         val startName = intent?.getStringExtra("startName")
         val goalName = intent?.getStringExtra("goalName")
@@ -89,7 +89,7 @@ class NavigationActivity : AppCompatActivity(), KNNaviView_StateDelegate,
 
                         binding.naviView.initWithGuidance(
                             this,
-                            trip,
+                            aTrip,
                             curRoutePriority,
                             curAvoidOptions
                         )

@@ -29,4 +29,6 @@ data class EmergencyResponse(
     val surgicalInpatientRoom: String,
     @SerializedName("neurologyInpatientRoom")
     val neurologyInpatientRoom: String,
+    @SerializedName("imageUrl")
+    val imageUrl: String,
 )
