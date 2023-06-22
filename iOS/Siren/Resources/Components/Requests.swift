@@ -21,9 +21,6 @@ class Requests {
         )
         .validate()
         .responseData { response in
-            if let resdata = response.data {
-                print(String(decoding: resdata, as: UTF8.self))
-            }
             switch response.result {
             case .success:
                 completion()
@@ -47,9 +44,6 @@ class Requests {
         )
         .validate()
         .responseData { response in
-            if let resdata = response.data {
-                print(String(decoding: resdata, as: UTF8.self))
-            }
             switch response.result {
             case .success:
                 if let data = response.data {
@@ -57,7 +51,6 @@ class Requests {
                     let dateFormatter = DateFormatter()
                     dateFormatter.dateFormat = "yyyy-MM-dd HH:mm:ss"
                     decoder.dateDecodingStrategy = .formatted(dateFormatter)
-                    //let decodedData = try! decoder.decode(Response<T>.self, from: data)
                     if let decodedData = try? decoder.decode(T.self, from: data) {
                         DispatchQueue.main.async {
                             completion(decodedData)
