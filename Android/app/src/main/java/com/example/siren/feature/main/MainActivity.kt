@@ -134,7 +134,7 @@ class MainActivity : AppCompatActivity(), OnMapReadyCallback {
             marker.icon = OverlayImage.fromResource(R.drawable.marker)
 
             marker.setOnClickListener {
-//                navigateToDetail(it.tag as Int)
+
                 true
             }
         }

@@ -32,16 +32,19 @@
 
         <TextView
             android:id="@+id/tv_hospital_name"
-            android:layout_width="wrap_content"
+            android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_marginStart="10dp"
             android:layout_marginTop="18dp"
             android:fontFamily="@font/pretendard_bold"
             android:textColor="@color/black"
             android:textSize="16sp"
-            tools:text="경북대학교병원"
+            android:maxLines="1"
+            android:ellipsize="end"
+            app:layout_constraintEnd_toStartOf="@+id/cv_distance"
             app:layout_constraintStart_toEndOf="@+id/cardView"
-            app:layout_constraintTop_toTopOf="parent" />
+            app:layout_constraintTop_toTopOf="parent"
+            tools:text="경북대학교병원" />
 
         <TextView
             android:id="@+id/tv_address"
@@ -50,10 +53,12 @@
             android:layout_marginStart="10dp"
             android:layout_marginTop="2dp"
             android:fontFamily="@font/pretendard_medium"
-            android:textSize="12sp"
             android:text="구지면 창리로 11길 93"
+            android:maxLines="1"
+            android:ellipsize="end"
             android:textColor="#7E7E7E"
-            app:layout_constraintEnd_toStartOf="@+id/imageButton"
+            android:textSize="12sp"
+            app:layout_constraintEnd_toStartOf="@+id/ib_navigation"
             app:layout_constraintStart_toEndOf="@+id/cardView"
             app:layout_constraintTop_toBottomOf="@+id/tv_hospital_name" />
 
@@ -76,11 +81,11 @@
             android:id="@+id/cv_distance"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:layout_marginTop="8dp"
             app:cardBackgroundColor="#F7493E"
             app:cardCornerRadius="100dp"
-            android:layout_marginTop="18dp"
-            android:layout_marginStart="4dp"
-            app:layout_constraintStart_toEndOf="@+id/tv_hospital_name"
+            android:layout_marginEnd="8dp"
+            app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintTop_toTopOf="parent">
 
             <TextView
@@ -92,7 +97,7 @@
                 android:paddingVertical="2.7dp"
                 android:textColor="@color/white"
                 android:textSize="12sp"
-                tools:text="4.7km" />
+                android:text="4.7km" />
 
         </androidx.cardview.widget.CardView>
 
