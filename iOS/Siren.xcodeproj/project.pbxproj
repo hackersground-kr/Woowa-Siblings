@@ -11,13 +11,17 @@
 		932987082A431B4900A43EEA /* Alamofire in Frameworks */ = {isa = PBXBuildFile; productRef = 932987072A431B4900A43EEA /* Alamofire */; };
 		932987112A431E3D00A43EEA /* MainViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 932987102A431E3D00A43EEA /* MainViewModel.swift */; };
 		932987132A431FBA00A43EEA /* Launch Screen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 932987122A431FBA00A43EEA /* Launch Screen.storyboard */; };
-		934F88882A43D89500817D1B /* MapVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 934F88872A43D89500817D1B /* MapVC.swift */; };
+		9330ED982A448E760003F565 /* Response.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9330ED972A448E760003F565 /* Response.swift */; };
+		9330ED9A2A448ED70003F565 /* Emergency.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9330ED992A448ED70003F565 /* Emergency.swift */; };
+		9330ED9C2A44929F0003F565 /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9330ED9B2A44929F0003F565 /* Constants.swift */; };
 		934F888A2A4409BB00817D1B /* LocationManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 934F88892A4409BB00817D1B /* LocationManager.swift */; };
 		934F888C2A440F6400817D1B /* Requests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 934F888B2A440F6400817D1B /* Requests.swift */; };
 		934F888F2A440FF400817D1B /* Coordinate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 934F888E2A440FF400817D1B /* Coordinate.swift */; };
-		934F88912A44179000817D1B /* CoordinateConvert.swift in Sources */ = {isa = PBXBuildFile; fileRef = 934F88902A44179000817D1B /* CoordinateConvert.swift */; };
 		934F88942A44366D00817D1B /* AppCenterDistribute in Frameworks */ = {isa = PBXBuildFile; productRef = 934F88932A44366D00817D1B /* AppCenterDistribute */; };
 		934F88962A4436F300817D1B /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 934F88952A4436F300817D1B /* AppDelegate.swift */; };
+		934F88A02A447B1200817D1B /* SirenTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 934F889F2A447B1200817D1B /* SirenTests.swift */; };
+		934F88AD2A447B2000817D1B /* SirenUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 934F88AC2A447B2000817D1B /* SirenUITests.swift */; };
+		934F88AF2A447B2000817D1B /* SirenUITestsLaunchTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 934F88AE2A447B2000817D1B /* SirenUITestsLaunchTests.swift */; };
 		9363669C2A43384E00882772 /* NavView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9363669B2A43384E00882772 /* NavView.swift */; };
 		93B20BF22A436385007B057B /* DetailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 93B20BF12A436385007B057B /* DetailView.swift */; };
 		93B20BF52A4387BB007B057B /* KakaoSDKNavi in Frameworks */ = {isa = PBXBuildFile; productRef = 93B20BF42A4387BB007B057B /* KakaoSDKNavi */; };
@@ -30,18 +34,41 @@
 		93B714AA2A4319230092D5F2 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 93B714A92A4319230092D5F2 /* Preview Assets.xcassets */; };
 /* End PBXBuildFile section */
 
+/* Begin PBXContainerItemProxy section */
+		934F88A12A447B1200817D1B /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 93B714972A4319220092D5F2 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 93B7149E2A4319220092D5F2;
+			remoteInfo = Siren;
+		};
+		934F88B02A447B2000817D1B /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 93B714972A4319220092D5F2 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 93B7149E2A4319220092D5F2;
+			remoteInfo = Siren;
+		};
+/* End PBXContainerItemProxy section */
+
 /* Begin PBXFileReference section */
 		0813C7517A2E27802B07A196 /* Pods-Siren.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Siren.release.xcconfig"; path = "Target Support Files/Pods-Siren/Pods-Siren.release.xcconfig"; sourceTree = "<group>"; };
 		1F568E3A99FFEA466A40BF39 /* Pods_Siren.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Siren.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		4B7A38E205D218FDAE4B727F /* Pods-Siren.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Siren.debug.xcconfig"; path = "Target Support Files/Pods-Siren/Pods-Siren.debug.xcconfig"; sourceTree = "<group>"; };
 		932987102A431E3D00A43EEA /* MainViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainViewModel.swift; sourceTree = "<group>"; };
 		932987122A431FBA00A43EEA /* Launch Screen.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = "Launch Screen.storyboard"; sourceTree = "<group>"; };
-		934F88872A43D89500817D1B /* MapVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapVC.swift; sourceTree = "<group>"; };
+		9330ED972A448E760003F565 /* Response.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Response.swift; sourceTree = "<group>"; };
+		9330ED992A448ED70003F565 /* Emergency.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Emergency.swift; sourceTree = "<group>"; };
+		9330ED9B2A44929F0003F565 /* Constants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
 		934F88892A4409BB00817D1B /* LocationManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocationManager.swift; sourceTree = "<group>"; };
 		934F888B2A440F6400817D1B /* Requests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Requests.swift; sourceTree = "<group>"; };
 		934F888E2A440FF400817D1B /* Coordinate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Coordinate.swift; sourceTree = "<group>"; };
-		934F88902A44179000817D1B /* CoordinateConvert.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoordinateConvert.swift; sourceTree = "<group>"; };
 		934F88952A4436F300817D1B /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
+		934F889D2A447B1200817D1B /* SirenTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = SirenTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		934F889F2A447B1200817D1B /* SirenTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SirenTests.swift; sourceTree = "<group>"; };
+		934F88AA2A447B2000817D1B /* SirenUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = SirenUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		934F88AC2A447B2000817D1B /* SirenUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SirenUITests.swift; sourceTree = "<group>"; };
+		934F88AE2A447B2000817D1B /* SirenUITestsLaunchTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SirenUITestsLaunchTests.swift; sourceTree = "<group>"; };
 		9363669B2A43384E00882772 /* NavView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NavView.swift; sourceTree = "<group>"; };
 		93B20BF12A436385007B057B /* DetailView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailView.swift; sourceTree = "<group>"; };
 		93B20BFE2A43927C007B057B /* NavVC.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = NavVC.m; sourceTree = "<group>"; };
@@ -57,6 +84,20 @@
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
+		934F889A2A447B1200817D1B /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		934F88A72A447B2000817D1B /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		93B7149C2A4319220092D5F2 /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
@@ -112,6 +153,7 @@
 		9329870C2A431E1A00A43EEA /* Model */ = {
 			isa = PBXGroup;
 			children = (
+				9330ED962A448E700003F565 /* Base */,
 				934F888D2A440FEE00817D1B /* Main */,
 			);
 			path = Model;
@@ -144,9 +186,18 @@
 			path = Main;
 			sourceTree = "<group>";
 		};
+		9330ED962A448E700003F565 /* Base */ = {
+			isa = PBXGroup;
+			children = (
+				9330ED972A448E760003F565 /* Response.swift */,
+			);
+			path = Base;
+			sourceTree = "<group>";
+		};
 		934F888D2A440FEE00817D1B /* Main */ = {
 			isa = PBXGroup;
 			children = (
+				9330ED992A448ED70003F565 /* Emergency.swift */,
 				934F888E2A440FF400817D1B /* Coordinate.swift */,
 			);
 			path = Main;
@@ -165,11 +216,28 @@
 		934F88982A4443E700817D1B /* Components */ = {
 			isa = PBXGroup;
 			children = (
-				934F88902A44179000817D1B /* CoordinateConvert.swift */,
+				9330ED9B2A44929F0003F565 /* Constants.swift */,
 				934F88892A4409BB00817D1B /* LocationManager.swift */,
 				934F888B2A440F6400817D1B /* Requests.swift */,
 			);
 			path = Components;
+			sourceTree = "<group>";
+		};
+		934F889E2A447B1200817D1B /* SirenTests */ = {
+			isa = PBXGroup;
+			children = (
+				934F889F2A447B1200817D1B /* SirenTests.swift */,
+			);
+			path = SirenTests;
+			sourceTree = "<group>";
+		};
+		934F88AB2A447B2000817D1B /* SirenUITests */ = {
+			isa = PBXGroup;
+			children = (
+				934F88AC2A447B2000817D1B /* SirenUITests.swift */,
+				934F88AE2A447B2000817D1B /* SirenUITestsLaunchTests.swift */,
+			);
+			path = SirenUITests;
 			sourceTree = "<group>";
 		};
 		9363669A2A43384500882772 /* Nav */ = {
@@ -194,7 +262,6 @@
 			isa = PBXGroup;
 			children = (
 				93B20C032A43D545007B057B /* MapView.swift */,
-				934F88872A43D89500817D1B /* MapVC.swift */,
 			);
 			path = Map;
 			sourceTree = "<group>";
@@ -203,6 +270,8 @@
 			isa = PBXGroup;
 			children = (
 				93B714A12A4319220092D5F2 /* Siren */,
+				934F889E2A447B1200817D1B /* SirenTests */,
+				934F88AB2A447B2000817D1B /* SirenUITests */,
 				93B714A02A4319220092D5F2 /* Products */,
 				C9233D4A548CC3A2CA5DB474 /* Pods */,
 				8744F7726F95DE5A0CFBCF96 /* Frameworks */,
@@ -213,6 +282,8 @@
 			isa = PBXGroup;
 			children = (
 				93B7149F2A4319220092D5F2 /* Siren.app */,
+				934F889D2A447B1200817D1B /* SirenTests.xctest */,
+				934F88AA2A447B2000817D1B /* SirenUITests.xctest */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -248,6 +319,42 @@
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
+		934F889C2A447B1200817D1B /* SirenTests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 934F88A32A447B1200817D1B /* Build configuration list for PBXNativeTarget "SirenTests" */;
+			buildPhases = (
+				934F88992A447B1200817D1B /* Sources */,
+				934F889A2A447B1200817D1B /* Frameworks */,
+				934F889B2A447B1200817D1B /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				934F88A22A447B1200817D1B /* PBXTargetDependency */,
+			);
+			name = SirenTests;
+			productName = SirenTests;
+			productReference = 934F889D2A447B1200817D1B /* SirenTests.xctest */;
+			productType = "com.apple.product-type.bundle.unit-test";
+		};
+		934F88A92A447B2000817D1B /* SirenUITests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 934F88B22A447B2000817D1B /* Build configuration list for PBXNativeTarget "SirenUITests" */;
+			buildPhases = (
+				934F88A62A447B2000817D1B /* Sources */,
+				934F88A72A447B2000817D1B /* Frameworks */,
+				934F88A82A447B2000817D1B /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				934F88B12A447B2000817D1B /* PBXTargetDependency */,
+			);
+			name = SirenUITests;
+			productName = SirenUITests;
+			productReference = 934F88AA2A447B2000817D1B /* SirenUITests.xctest */;
+			productType = "com.apple.product-type.bundle.ui-testing";
+		};
 		93B7149E2A4319220092D5F2 /* Siren */ = {
 			isa = PBXNativeTarget;
 			buildConfigurationList = 93B714AD2A4319230092D5F2 /* Build configuration list for PBXNativeTarget "Siren" */;
@@ -283,6 +390,14 @@
 				LastSwiftUpdateCheck = 1430;
 				LastUpgradeCheck = 1430;
 				TargetAttributes = {
+					934F889C2A447B1200817D1B = {
+						CreatedOnToolsVersion = 14.3;
+						TestTargetID = 93B7149E2A4319220092D5F2;
+					};
+					934F88A92A447B2000817D1B = {
+						CreatedOnToolsVersion = 14.3;
+						TestTargetID = 93B7149E2A4319220092D5F2;
+					};
 					93B7149E2A4319220092D5F2 = {
 						CreatedOnToolsVersion = 14.3;
 						LastSwiftMigration = 1430;
@@ -309,11 +424,27 @@
 			projectRoot = "";
 			targets = (
 				93B7149E2A4319220092D5F2 /* Siren */,
+				934F889C2A447B1200817D1B /* SirenTests */,
+				934F88A92A447B2000817D1B /* SirenUITests */,
 			);
 		};
 /* End PBXProject section */
 
 /* Begin PBXResourcesBuildPhase section */
+		934F889B2A447B1200817D1B /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		934F88A82A447B2000817D1B /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		93B7149D2A4319220092D5F2 /* Resources */ = {
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
@@ -369,6 +500,23 @@
 /* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
+		934F88992A447B1200817D1B /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				934F88A02A447B1200817D1B /* SirenTests.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		934F88A62A447B2000817D1B /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				934F88AF2A447B2000817D1B /* SirenUITestsLaunchTests.swift in Sources */,
+				934F88AD2A447B2000817D1B /* SirenUITests.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		93B7149B2A4319220092D5F2 /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
@@ -379,11 +527,12 @@
 				934F888C2A440F6400817D1B /* Requests.swift in Sources */,
 				93B714A32A4319220092D5F2 /* AppMain.swift in Sources */,
 				934F888F2A440FF400817D1B /* Coordinate.swift in Sources */,
+				9330ED982A448E760003F565 /* Response.swift in Sources */,
 				93B20BFF2A43927C007B057B /* NavVC.m in Sources */,
-				934F88912A44179000817D1B /* CoordinateConvert.swift in Sources */,
 				934F88962A4436F300817D1B /* AppDelegate.swift in Sources */,
-				934F88882A43D89500817D1B /* MapVC.swift in Sources */,
 				93B20BF22A436385007B057B /* DetailView.swift in Sources */,
+				9330ED9A2A448ED70003F565 /* Emergency.swift in Sources */,
+				9330ED9C2A44929F0003F565 /* Constants.swift in Sources */,
 				934F888A2A4409BB00817D1B /* LocationManager.swift in Sources */,
 				932987112A431E3D00A43EEA /* MainViewModel.swift in Sources */,
 			);
@@ -391,7 +540,94 @@
 		};
 /* End PBXSourcesBuildPhase section */
 
+/* Begin PBXTargetDependency section */
+		934F88A22A447B1200817D1B /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 93B7149E2A4319220092D5F2 /* Siren */;
+			targetProxy = 934F88A12A447B1200817D1B /* PBXContainerItemProxy */;
+		};
+		934F88B12A447B2000817D1B /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 93B7149E2A4319220092D5F2 /* Siren */;
+			targetProxy = 934F88B02A447B2000817D1B /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
+
 /* Begin XCBuildConfiguration section */
+		934F88A42A447B1200817D1B /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = 56V747V83R;
+				GENERATE_INFOPLIST_FILE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 16.4;
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = net.mercen.SirenTests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_EMIT_LOC_STRINGS = NO;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/Siren.app/$(BUNDLE_EXECUTABLE_FOLDER_PATH)/Siren";
+			};
+			name = Debug;
+		};
+		934F88A52A447B1200817D1B /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = 56V747V83R;
+				GENERATE_INFOPLIST_FILE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 16.4;
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = net.mercen.SirenTests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_EMIT_LOC_STRINGS = NO;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/Siren.app/$(BUNDLE_EXECUTABLE_FOLDER_PATH)/Siren";
+			};
+			name = Release;
+		};
+		934F88B32A447B2000817D1B /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = 56V747V83R;
+				GENERATE_INFOPLIST_FILE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 16.4;
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = net.mercen.SirenUITests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_EMIT_LOC_STRINGS = NO;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_TARGET_NAME = Siren;
+			};
+			name = Debug;
+		};
+		934F88B42A447B2000817D1B /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = 56V747V83R;
+				GENERATE_INFOPLIST_FILE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 16.4;
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = net.mercen.SirenUITests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_EMIT_LOC_STRINGS = NO;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_TARGET_NAME = Siren;
+			};
+			name = Release;
+		};
 		93B714AB2A4319230092D5F2 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
@@ -584,6 +820,24 @@
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
+		934F88A32A447B1200817D1B /* Build configuration list for PBXNativeTarget "SirenTests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				934F88A42A447B1200817D1B /* Debug */,
+				934F88A52A447B1200817D1B /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		934F88B22A447B2000817D1B /* Build configuration list for PBXNativeTarget "SirenUITests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				934F88B32A447B2000817D1B /* Debug */,
+				934F88B42A447B2000817D1B /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
 		93B7149A2A4319220092D5F2 /* Build configuration list for PBXProject "Siren" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (

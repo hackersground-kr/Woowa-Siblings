@@ -26,22 +26,11 @@ struct MainView: View {
                     .ignoresSafeArea()
             } else {
                 ZStack {
-                    MapView()
-                        .ignoresSafeArea()
+                    if let coordinates = viewModel.coordinates {
+                        MapView(coordinates: coordinates)
+                            .ignoresSafeArea()
+                    }
                     VStack {
-                        HStack(spacing: 8) {
-                            Image(systemName: "magnifyingglass")
-                                .resizable()
-                                .frame(width: 20, height: 20)
-                                .foregroundColor(.gray)
-                            TextField("검색어를 입력해주세요", text: $viewModel.searchText)
-                                .font(.system(size: 16, weight: .medium))
-                        }
-                        .padding(.horizontal, 20)
-                        .padding(.vertical, 12)
-                        .background(Color.white)
-                        .cornerRadius(15)
-                        .padding(.horizontal, 20)
                         Spacer()
                         ScrollView(.horizontal, showsIndicators: false) {
                             HStack(spacing: 10) {
@@ -85,13 +74,11 @@ struct MainView: View {
                                                 .padding(.vertical, 8)
                                                 Spacer()
                                                 Button(action: {
-                                                    let geoConverter = GeoConverter()
-                                                    let value = geoConverter.convert(sourceType: .WGS_84,
-                                                                                     destinationType: .KATEC,
-                                                                                     geoPoint: .init(x: locationManager.userLongitude,
-                                                                                                     y: locationManager.userLatitude))
-                                                    viewModel.startX = value!.x
-                                                    viewModel.startY = value!.y
+                                                    let value = KNSDK.sharedInstance()!
+                                                        .convertWGS84ToKATEC(withLongitude: locationManager.userLongitude,
+                                                                             latitude: locationManager.userLatitude)
+                                                    viewModel.startX = CGFloat(value.x)
+                                                    viewModel.startY = CGFloat(value.y)
                                                     viewModel.active = true
                                                 }) {
                                                     Image("Path")
@@ -128,6 +115,7 @@ struct MainView: View {
                 }
             }
         }
+        .onAppear(perform: viewModel.initData)
     }
 }
 

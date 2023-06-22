@@ -6,13 +6,17 @@
 //
 
 import SwiftUI
+import NMapsMap
 
-struct MapView: UIViewControllerRepresentable {
-    func makeUIViewController(context: Context) -> MapVC {
-        let vc = MapVC()
-        return vc
+struct MapView: UIViewRepresentable {
+    
+    let coordinates: [Coordinate]
+    
+    func makeUIView(context: Context) -> UIView {
+        let mapView = NMFMapView(frame: .infinite)
+        return mapView
     }
 
-    func updateUIViewController(_ uiViewController: MapVC, context: Context) {
+    func updateUIView(_ uiViewController: UIView, context: Context) {
     }
 }

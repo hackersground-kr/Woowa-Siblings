@@ -8,15 +8,9 @@
 import Foundation
 
 struct Coordinate: Codable {
-    let meta: CoordinateMeta
-    let documents: [CoordinateDocuments]
-}
-
-struct CoordinateMeta: Codable {
-    let totalCount: Int
-}
-
-struct CoordinateDocuments: Codable {
-    let x: CGFloat
-    let y: CGFloat
+    let wgs84Lon, wgs84Lat: Double
+    let rnum, phpid, hpid, dutyTel1,
+        dutyName, dutyEmclsName,
+        dutyEmcls, dutyAddr: String
+    let dutyTel3: String?
 }
