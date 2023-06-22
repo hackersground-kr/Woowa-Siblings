@@ -20,6 +20,11 @@ jobs:
         uses: actions/setup-java@v1
         with:
           java-version: '17'
+          
+      - uses: actions/checkout@v3
+      - run: touch ./server/src/main/resources/application.properties
+      - run: echo "${{ secrets.APPLICATION }}" > ./server/src/main/resources/application.properties
+      - run: cat ./server/src/main/resources/application.properties
 
       - name: chmod
         run: chmod +x server/gradlew
