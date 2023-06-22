@@ -29,19 +29,6 @@ struct MainView: View {
                     MapView()
                         .ignoresSafeArea()
                     VStack {
-                        HStack(spacing: 8) {
-                            Image(systemName: "magnifyingglass")
-                                .resizable()
-                                .frame(width: 20, height: 20)
-                                .foregroundColor(.gray)
-                            TextField("검색어를 입력해주세요", text: $viewModel.searchText)
-                                .font(.system(size: 16, weight: .medium))
-                        }
-                        .padding(.horizontal, 20)
-                        .padding(.vertical, 12)
-                        .background(Color.white)
-                        .cornerRadius(15)
-                        .padding(.horizontal, 20)
                         Spacer()
                         ScrollView(.horizontal, showsIndicators: false) {
                             HStack(spacing: 10) {
