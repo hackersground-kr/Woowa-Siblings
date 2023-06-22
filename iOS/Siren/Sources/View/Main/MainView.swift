@@ -14,11 +14,13 @@ struct MainView: View {
     
     var body: some View {
         GeometryReader { outsideProxy in
-            ZStack {
-                if active {
-                    NavView(active: $active, startDest: "EXCO", startX: 345585.0000016, startY: 267122.999974, endDest: "경북대학교", endX: 344899.540357, endY: 264387.239136)
+            if active {
+                NavView(active: $active, startDest: "EXCO", startX: 345585.0000016, startY: 267122.999974, endDest: "경북대학교", endX: 344899.540357, endY: 264387.239136)
+                    .ignoresSafeArea()
+            } else {
+                ZStack {
+                    MapView()
                         .ignoresSafeArea()
-                } else {
                     VStack {
                         HStack(spacing: 8) {
                             Image(systemName: "magnifyingglass")
@@ -76,7 +78,7 @@ struct MainView: View {
                                                 .padding(.vertical, 8)
                                                 Spacer()
                                                 Button(action: {
-                                                    
+                                                    active = true
                                                 }) {
                                                     Image("Path")
                                                         .foregroundColor(.white)
@@ -107,13 +109,10 @@ struct MainView: View {
                             .padding(.horizontal, 20)
                         }
                     }
+                    .shadow(color: .black.opacity(0.2), radius: 2, y: 2)
+                    .shadow(color: .black.opacity(0.1), radius: 6, y: 6)
                 }
             }
-            .shadow(color: .black.opacity(0.2), radius: 2, y: 2)
-            .shadow(color: .black.opacity(0.1), radius: 6, y: 6)
-        }
-        .onAppear {
-            active = true
         }
     }
 }
