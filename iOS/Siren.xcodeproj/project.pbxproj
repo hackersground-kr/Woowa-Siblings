@@ -83,14 +83,10 @@
 		932987092A431D8800A43EEA /* Resources */ = {
 			isa = PBXGroup;
 			children = (
+				934F88972A4443D800817D1B /* Application */,
+				934F88982A4443E700817D1B /* Components */,
 				93B714A62A4319230092D5F2 /* Assets.xcassets */,
 				932987122A431FBA00A43EEA /* Launch Screen.storyboard */,
-				93B714A22A4319220092D5F2 /* AppMain.swift */,
-				934F88952A4436F300817D1B /* AppDelegate.swift */,
-				93B20C002A4392A6007B057B /* Siren-Bridging-Header.h */,
-				934F88902A44179000817D1B /* CoordinateConvert.swift */,
-				934F88892A4409BB00817D1B /* LocationManager.swift */,
-				934F888B2A440F6400817D1B /* Requests.swift */,
 			);
 			path = Resources;
 			sourceTree = "<group>";
@@ -154,6 +150,26 @@
 				934F888E2A440FF400817D1B /* Coordinate.swift */,
 			);
 			path = Main;
+			sourceTree = "<group>";
+		};
+		934F88972A4443D800817D1B /* Application */ = {
+			isa = PBXGroup;
+			children = (
+				93B714A22A4319220092D5F2 /* AppMain.swift */,
+				934F88952A4436F300817D1B /* AppDelegate.swift */,
+				93B20C002A4392A6007B057B /* Siren-Bridging-Header.h */,
+			);
+			path = Application;
+			sourceTree = "<group>";
+		};
+		934F88982A4443E700817D1B /* Components */ = {
+			isa = PBXGroup;
+			children = (
+				934F88902A44179000817D1B /* CoordinateConvert.swift */,
+				934F88892A4409BB00817D1B /* LocationManager.swift */,
+				934F888B2A440F6400817D1B /* Requests.swift */,
+			);
+			path = Components;
 			sourceTree = "<group>";
 		};
 		9363669A2A43384500882772 /* Nav */ = {
@@ -521,7 +537,7 @@
 				PRODUCT_BUNDLE_IDENTIFIER = net.mercen.Siren;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_EMIT_LOC_STRINGS = YES;
-				SWIFT_OBJC_BRIDGING_HEADER = "Siren/Resources/Siren-Bridging-Header.h";
+				SWIFT_OBJC_BRIDGING_HEADER = "Siren/Resources/Application/Siren-Bridging-Header.h";
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
@@ -559,7 +575,7 @@
 				PRODUCT_BUNDLE_IDENTIFIER = net.mercen.Siren;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_EMIT_LOC_STRINGS = YES;
-				SWIFT_OBJC_BRIDGING_HEADER = "Siren/Resources/Siren-Bridging-Header.h";
+				SWIFT_OBJC_BRIDGING_HEADER = "Siren/Resources/Application/Siren-Bridging-Header.h";
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
