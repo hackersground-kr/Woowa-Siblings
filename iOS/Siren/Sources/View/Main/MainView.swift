@@ -72,13 +72,11 @@ struct MainView: View {
                                                 .padding(.vertical, 8)
                                                 Spacer()
                                                 Button(action: {
-                                                    let geoConverter = GeoConverter()
-                                                    let value = geoConverter.convert(sourceType: .WGS_84,
-                                                                                     destinationType: .KATEC,
-                                                                                     geoPoint: .init(x: locationManager.userLongitude,
-                                                                                                     y: locationManager.userLatitude))
-                                                    viewModel.startX = value!.x
-                                                    viewModel.startY = value!.y
+                                                    let value = KNSDK.sharedInstance()!
+                                                        .convertWGS84ToKATEC(withLongitude: locationManager.userLongitude,
+                                                                             latitude: locationManager.userLatitude)
+                                                    viewModel.startX = CGFloat(value.x)
+                                                    viewModel.startY = CGFloat(value.y)
                                                     viewModel.active = true
                                                 }) {
                                                     Image("Path")

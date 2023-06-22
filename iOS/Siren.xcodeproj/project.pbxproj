@@ -15,7 +15,6 @@
 		934F888A2A4409BB00817D1B /* LocationManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 934F88892A4409BB00817D1B /* LocationManager.swift */; };
 		934F888C2A440F6400817D1B /* Requests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 934F888B2A440F6400817D1B /* Requests.swift */; };
 		934F888F2A440FF400817D1B /* Coordinate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 934F888E2A440FF400817D1B /* Coordinate.swift */; };
-		934F88912A44179000817D1B /* CoordinateConvert.swift in Sources */ = {isa = PBXBuildFile; fileRef = 934F88902A44179000817D1B /* CoordinateConvert.swift */; };
 		934F88942A44366D00817D1B /* AppCenterDistribute in Frameworks */ = {isa = PBXBuildFile; productRef = 934F88932A44366D00817D1B /* AppCenterDistribute */; };
 		934F88962A4436F300817D1B /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 934F88952A4436F300817D1B /* AppDelegate.swift */; };
 		934F88A02A447B1200817D1B /* SirenTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 934F889F2A447B1200817D1B /* SirenTests.swift */; };
@@ -60,7 +59,6 @@
 		934F88892A4409BB00817D1B /* LocationManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocationManager.swift; sourceTree = "<group>"; };
 		934F888B2A440F6400817D1B /* Requests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Requests.swift; sourceTree = "<group>"; };
 		934F888E2A440FF400817D1B /* Coordinate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Coordinate.swift; sourceTree = "<group>"; };
-		934F88902A44179000817D1B /* CoordinateConvert.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoordinateConvert.swift; sourceTree = "<group>"; };
 		934F88952A4436F300817D1B /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		934F889D2A447B1200817D1B /* SirenTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = SirenTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		934F889F2A447B1200817D1B /* SirenTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SirenTests.swift; sourceTree = "<group>"; };
@@ -204,7 +202,6 @@
 		934F88982A4443E700817D1B /* Components */ = {
 			isa = PBXGroup;
 			children = (
-				934F88902A44179000817D1B /* CoordinateConvert.swift */,
 				934F88892A4409BB00817D1B /* LocationManager.swift */,
 				934F888B2A440F6400817D1B /* Requests.swift */,
 			);
@@ -517,7 +514,6 @@
 				93B714A32A4319220092D5F2 /* AppMain.swift in Sources */,
 				934F888F2A440FF400817D1B /* Coordinate.swift in Sources */,
 				93B20BFF2A43927C007B057B /* NavVC.m in Sources */,
-				934F88912A44179000817D1B /* CoordinateConvert.swift in Sources */,
 				934F88962A4436F300817D1B /* AppDelegate.swift in Sources */,
 				934F88882A43D89500817D1B /* MapVC.swift in Sources */,
 				93B20BF22A436385007B057B /* DetailView.swift in Sources */,
