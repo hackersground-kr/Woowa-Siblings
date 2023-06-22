@@ -14,7 +14,7 @@ class AppDelegate: NSObject, UIApplicationDelegate {
         _ application: UIApplication,
         didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]? = nil
     ) -> Bool {
-        AppCenter.start(withAppSecret: "4c5d8acf-ebae-4b3c-936f-84ee1d12b7b0", services: [Distribute.self])
+        AppCenter.start(withAppSecret: "", services: [Distribute.self])
         return true
     }
 }

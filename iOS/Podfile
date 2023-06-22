@@ -7,4 +7,6 @@ target 'Siren' do
 
   # Pods for Siren
   pod 'NMapsMap'
+  pod 'SwiftLint'
+
 end
