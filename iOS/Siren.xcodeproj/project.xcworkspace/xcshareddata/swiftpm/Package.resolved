@@ -1,0 +1,50 @@
+{
+  "pins" : [
+    {
+      "identity" : "alamofire",
+      "kind" : "remoteSourceControl",
+      "location" : "https://github.com/Alamofire/Alamofire",
+      "state" : {
+        "revision" : "bc268c28fb170f494de9e9927c371b8342979ece",
+        "version" : "5.7.1"
+      }
+    },
+    {
+      "identity" : "jupiter-sdk-spm",
+      "kind" : "remoteSourceControl",
+      "location" : "https://github.com/tjlabs/jupiter-sdk-spm",
+      "state" : {
+        "revision" : "4d95ec830b744aa9cfdb20492fdead8af82652fe",
+        "version" : "1.11.27"
+      }
+    },
+    {
+      "identity" : "kakao-ios-sdk",
+      "kind" : "remoteSourceControl",
+      "location" : "https://github.com/kakao/kakao-ios-sdk",
+      "state" : {
+        "revision" : "d788f9a5a888f16253b9c3d9f3bd794835708c3f",
+        "version" : "2.15.0"
+      }
+    },
+    {
+      "identity" : "kmlocationsdk",
+      "kind" : "remoteSourceControl",
+      "location" : "https://github.com/kakaomob/KMLocationSDK.git",
+      "state" : {
+        "revision" : "243ed56309d1fa830471a60745f33514328cf920",
+        "version" : "1.3.17"
+      }
+    },
+    {
+      "identity" : "knsdk-ui",
+      "kind" : "remoteSourceControl",
+      "location" : "https://github.com/kakaomob/KNSDK-UI.git",
+      "state" : {
+        "revision" : "a5101d25b6c0eda4b5242f7d9c344f14d93978cd",
+        "version" : "1.8.0"
+      }
+    }
+  ],
+  "version" : 2
+}
