@@ -6,7 +6,11 @@
 //
 
 import Combine
+import CoreLocation
 
-class MainViewModel {
-    
+class MainViewModel: ObservableObject {
+    @Published var searchText: String = ""
+    @Published var active: Bool = false
+    @Published var startX: CGFloat = 0
+    @Published var startY: CGFloat = 0
 }

@@ -6,16 +6,23 @@
 //
 
 import SwiftUI
+import CoreLocation
 
 struct MainView: View {
-    
-    @State var searchText: String = ""
-    @State var active: Bool = false
+
+    @StateObject private var locationManager = LocationManager()
+    @StateObject private var viewModel = MainViewModel()
     
     var body: some View {
         GeometryReader { outsideProxy in
-            if active {
-                NavView(active: $active, startDest: "EXCO", startX: 345585.0000016, startY: 267122.999974, endDest: "경북대학교", endX: 344899.540357, endY: 264387.239136)
+            if viewModel.active {
+                NavView(active: $viewModel.active,
+                        startDest: "현재 위치",
+                        startX: viewModel.startX,
+                        startY: viewModel.startY,
+                        endDest: "경북대학교",
+                        endX: 344899.540357,
+                        endY: 264387.239136)
                     .ignoresSafeArea()
             } else {
                 ZStack {
@@ -27,7 +34,7 @@ struct MainView: View {
                                 .resizable()
                                 .frame(width: 20, height: 20)
                                 .foregroundColor(.gray)
-                            TextField("검색어를 입력해주세요", text: $searchText)
+                            TextField("검색어를 입력해주세요", text: $viewModel.searchText)
                                 .font(.system(size: 16, weight: .medium))
                         }
                         .padding(.horizontal, 20)
@@ -78,7 +85,14 @@ struct MainView: View {
                                                 .padding(.vertical, 8)
                                                 Spacer()
                                                 Button(action: {
-                                                    active = true
+                                                    let geoConverter = GeoConverter()
+                                                    let value = geoConverter.convert(sourceType: .WGS_84,
+                                                                                     destinationType: .KATEC,
+                                                                                     geoPoint: .init(x: locationManager.userLongitude,
+                                                                                                     y: locationManager.userLatitude))
+                                                    viewModel.startX = value!.x
+                                                    viewModel.startY = value!.y
+                                                    viewModel.active = true
                                                 }) {
                                                     Image("Path")
                                                         .foregroundColor(.white)
