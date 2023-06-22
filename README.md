@@ -25,6 +25,11 @@
 
 > **아래 제공하는 설치 방법을 통해 심사위원단이 여러분의 제품/서비스를 실제 Microsoft 애저 클라우드에 배포하고 설치할 수 있어야 합니다. 만약 아래 설치 방법대로 따라해서 배포 및 설치가 되지 않을 경우 본선에 진출할 수 없습니다.**
 
+## Server
+
+- 기본적인 Java 실행에 필요한 것들을 준비해놓아야 함 [https://www.oracle.com/kr/]
+- Git을 준비해놓아야함 [https://git-scm.com/]
+
 ## iOS
 
 ![step1](https://github.com/hackersground-kr/Woowa-Siblings/blob/87798e57811869814eaa46c8e8e52f0a706c823b/images/iOS/Step1.png)
@@ -80,7 +85,9 @@ Distribute 버튼을 누릅니다.
 > **여러분의 제품/서비스를 Microsoft 애저 클라우드에 배포하기 위해 사전에 필요한 준비 사항들을 적어주세요.**
 > > - iOS : 
 > - android : 
-> - backend : 
+> - backend :
+- Spring Boot Project (작성자 기준 : Gradle-Groovy, Java, Spring Boot 3.1.0, 패키징 war, JDK 17)
+- main-server와 dev-server로 branch를 나눈 Git 프로젝트, hackersground 제출에 필요한 파일들과 server 폴더, server 폴더 안에 Spring Boot Project가 들어가 있어야함
 
 ## 시작하기
 
@@ -113,4 +120,19 @@ AppCenter.start(application, "{Your app secret here}",
 6. 프로젝트의 Key store path를 등록하고 Key password와 Key Store password를 입력한 후 NEXT를 누른다.
 7. `release`를 선택한 후 Create를 눌러 aab 파일을 생성한다.
 8. App Center의 Distribute에 들어가서 New release를 클릭한 후 app/release 디렉터리에 있는 aab 파일을 등록한다.
-> - backend : 
+> - backend :
+
+Azure App Service에 가서, 새로운 웹 앱을 만듭니다.
+본인의 사정에 맞게 기본 설정을 합니다. (본인은 게시 : 코드, 런타임 스택 : Java 17, 운영 체제 : Linux로 설정)
+배포 탭에 가서 Github Actions 설정 밑에 지속적인 배포 사용을 선택하고, 본인의 계정, 레포지토리, 브랜치를 선택합니다.
+그 후 검토 후 만들기를 선택합니다.
+Azure App Service의 배포가 완료되었다면, 본인이 만든 App Service의 개요에서 게시 프로필 다운로드를 미리 받아놓습니다.
+그 후, 구성에 들어가 일반 설정에 들어가면, Java 웹 서버를 Apache Tomcat 10.0으로 세팅합니다.
+시작 명령에 java -jar /home/site/wwwroot/{your_file_name}.war --server.port=80를 추가합니다
+본인의 Github Repository에 들어가, 프로젝트 폴더에 있는 .github/workflows에 있는 yml 파일을 엽니다.
+본인의 상황에 맞게 yml을 작성합니다. (본인은 main, main-server, dev-server 브랜치를 나눠서 개발했기 때문에, main-server에 Push가 되면 Deploy가 되도록 했습니다)
+참고 자료 : [https://github.com/hackersground-kr/Woowa-Siblings/blob/main-server/.github/workflows/main-server_siren.yml]
+Deploy to Azure Web App 부분이 중요한데, Azure에 zip 파일안에 war 파일을 담아서 보내는 부분입니다.
+${{ secrets.AZUREAPPSERVICE_PUBLISHPROFILE_7E99AD0C1D8B49DE8F51757891AAE21F }} 부분은 배포를 하기 위한 게시 프로필을 올려놓는 곳 입니다.
+본인의 프로젝트에 가서, Setting -> Secrets and variables -> Actions에 들어갑니다.
+New Repository Secret을 누르고, Name에 secrets를 기입한 뒤, 아까 다운로드 받아놓은 게시 프로필의 내용을 Secret에 그대로 붙여넣습니다.
