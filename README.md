@@ -84,7 +84,10 @@ Distribute 버튼을 누릅니다.
 
 > **여러분의 제품/서비스를 Microsoft 애저 클라우드에 배포하기 위해 사전에 필요한 준비 사항들을 적어주세요.**
 > > - iOS : 
-> - android : 
+> - android :
+- Microsoft Azure 계정
+- 안드로이드 빌드 aab or apk 파일
+- Github 계정
 > - backend :
 - Spring Boot Project (작성자 기준 : Gradle-Groovy, Java, Spring Boot 3.1.0, 패키징 war, JDK 17)
 - main-server와 dev-server로 branch를 나눈 Git 프로젝트, hackersground 제출에 필요한 파일들과 server 폴더, server 폴더 안에 Spring Boot Project가 들어가 있어야함
@@ -95,10 +98,6 @@ Distribute 버튼을 누릅니다.
 > > - iOS :
 
 > android :
-- Microsoft Azure 계정
-- 안드로이드 빌드 aab or apk 파일
-- Github 계정
-Microsoft App Center에 사전 준비 사항
 1. [App Center](https://appcenter.ms/apps) 에 접속해서 로그인한다.
 2. Add new app 버튼을 누르고 `App name`, `Release Type`, `Icon`, `OS`, `Platform`을 선택한 후 Add new app을 클릭한다.
 3. 안드로이드 프로젝트의 app/build.gralde에 아래 epicenter dependency를 추가한 뒤 sync 한다.
