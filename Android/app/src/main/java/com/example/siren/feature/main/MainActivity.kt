@@ -1,13 +1,10 @@
 package com.example.siren.feature.main
 
-import android.content.Intent
 import android.os.Bundle
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import com.example.siren.R
 import com.example.siren.databinding.ActivityMainBinding
-import com.example.siren.feature.main.adapter.MainAdapter
-import com.example.siren.feature.navigation.NavigationActivity
 import com.example.siren.util.HorizontalMarginItemDecoration
 import com.example.siren.util.SirenApplication
 import com.kakaomobility.knsdk.KNLanguageType
@@ -17,7 +14,11 @@ import com.kakaomobility.knsdk.common.gps.KN_DEFAULT_POS_Y
 import com.kakaomobility.knsdk.common.gps.WGS84ToKATEC
 import com.kakaomobility.knsdk.common.util.FloatPoint
 import com.kakaomobility.knsdk.map.knmaprenderer.objects.KNMapCameraUpdate
+import com.microsoft.appcenter.AppCenter
+import com.microsoft.appcenter.analytics.Analytics
+import com.microsoft.appcenter.crashes.Crashes
 import dagger.hilt.android.AndroidEntryPoint
+
 
 @AndroidEntryPoint
 class MainActivity : AppCompatActivity() {
@@ -29,12 +30,17 @@ class MainActivity : AppCompatActivity() {
         applyMapSettings()
         initViewPager()
         initMapView()
+
+        AppCenter.start(
+            application, "76cc6612-5ef5-4b0c-b751-8d8f3adcafdf",
+            Analytics::class.java, Crashes::class.java
+        )
     }
 
     private fun initViewPager() = with(binding.viewPager) {
-        adapter = MainAdapter() {
-            startActivity(Intent(this@MainActivity, NavigationActivity::class.java))
-        }
+//        adapter = MainAdapter() {
+//            startActivity(Intent(this@MainActivity, NavigationActivity::class.java))
+//        }
 
         offscreenPageLimit = 3
         setPadding(50, 0, 50, 100)
