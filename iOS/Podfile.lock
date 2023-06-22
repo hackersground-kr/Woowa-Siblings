@@ -2,19 +2,23 @@ PODS:
   - NMapsGeometry (1.0.1)
   - NMapsMap (3.16.2):
     - NMapsGeometry
+  - SwiftLint (0.50.0)
 
 DEPENDENCIES:
   - NMapsMap
+  - SwiftLint
 
 SPEC REPOS:
   trunk:
     - NMapsGeometry
     - NMapsMap
+    - SwiftLint
 
 SPEC CHECKSUMS:
   NMapsGeometry: 53c573ead66466681cf123f99f698dc8071a4b83
   NMapsMap: aaa64717249b06ae82c3a3addb3a01f0e33100ab
+  SwiftLint: 9cbf846727f3312f3ba722f2d7108a162cd050a5
 
-PODFILE CHECKSUM: d47a5703e561be8489a10272edf5f541b9a62c85
+PODFILE CHECKSUM: 97a8339c81342170a51da9edfc059942c3bb5f65
 
 COCOAPODS: 1.11.3
