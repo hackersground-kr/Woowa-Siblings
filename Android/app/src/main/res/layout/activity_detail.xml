@@ -28,7 +28,6 @@
                 android:layout_width="match_parent"
                 android:layout_height="300dp"
                 android:scaleType="centerCrop"
-                android:src="@drawable/sample1"
                 android:elevation="0dp"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
@@ -38,25 +37,32 @@
                 android:layout_height="match_parent"
                 android:background="@drawable/background_bottomsheet"
                 android:layout_marginTop="-20dp">
+
                 <TextView
                     android:id="@+id/tv_hospital_name_detail"
-                    android:layout_width="wrap_content"
+                    android:layout_width="0dp"
                     android:layout_height="wrap_content"
                     android:layout_margin="20dp"
                     android:fontFamily="@font/pretendard_bold"
-                    android:text="도 터지는 짤"
+                    tools:text="테스트입니다."
                     android:textColor="@color/black"
                     android:textSize="24sp"
+                    android:maxLines="1"
+                    android:ellipsize="end"
+                    app:layout_constraintEnd_toStartOf="@+id/cv_distance"
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toTopOf="parent" />
 
                 <TextView
                     android:id="@+id/tv_address_detail"
-                    android:layout_width="wrap_content"
+                    android:layout_width="0dp"
                     android:layout_height="wrap_content"
-                    android:text="대구 달성군 구지면 창리로 11길 93"
+                    tools:text="대구 달성군 구지면 창리로 11길 93"
                     android:textColor="#7E7E7E"
                     android:textSize="14sp"
+                    android:maxLines="1"
+                    android:ellipsize="end"
+                    app:layout_constraintEnd_toStartOf="@+id/tv_telephone"
                     app:layout_constraintStart_toStartOf="@+id/tv_hospital_name_detail"
                     app:layout_constraintTop_toBottomOf="@+id/tv_hospital_name_detail" />
 
@@ -68,7 +74,7 @@
                     android:fontFamily="@font/pretendard_bold"
                     android:text="남은 병실"
                     android:textColor="@color/black"
-                    android:textSize="24sp"
+                    android:textSize="20sp"
                     app:layout_constraintStart_toStartOf="@+id/tv_hospital_name_detail"
                     app:layout_constraintTop_toBottomOf="@+id/tv_address_detail" />
 
@@ -97,20 +103,23 @@
                 </androidx.cardview.widget.CardView>
 
                 <TextView
+                    android:id="@+id/tv_telephone"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginTop="9dp"
                     android:text="053-200-5100"
+                    android:textColor="@color/accent_color"
                     app:layout_constraintEnd_toEndOf="@+id/cv_distance"
                     app:layout_constraintTop_toBottomOf="@+id/cv_distance" />
 
                 <androidx.recyclerview.widget.RecyclerView
                     android:id="@+id/recyclerView1"
-                    android:layout_width="0dp"
+                    android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_marginTop="10dp"
                     android:orientation="horizontal"
                     android:paddingHorizontal="20dp"
+                    android:clipToPadding="false"
                     app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintStart_toStartOf="parent"
@@ -118,11 +127,12 @@
 
                 <androidx.recyclerview.widget.RecyclerView
                     android:id="@+id/recyclerView2"
-                    android:layout_width="0dp"
+                    android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_marginTop="10dp"
                     android:orientation="horizontal"
                     android:paddingHorizontal="20dp"
+                    android:clipToPadding="false"
                     app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintStart_toStartOf="parent"
@@ -136,7 +146,7 @@
                     android:fontFamily="@font/pretendard_bold"
                     android:text="진료 불가"
                     android:textColor="@color/black"
-                    android:textSize="24sp"
+                    android:textSize="20sp"
                     app:layout_constraintStart_toStartOf="@+id/tv_hospital_name_detail"
                     app:layout_constraintTop_toBottomOf="@+id/recyclerView2" />
 
@@ -147,6 +157,7 @@
                     android:layout_marginTop="10dp"
                     android:orientation="horizontal"
                     android:paddingHorizontal="20dp"
+                    android:clipToPadding="false"
                     app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
                     app:layout_constraintBottom_toBottomOf="parent"
                     app:layout_constraintEnd_toEndOf="parent"
@@ -162,7 +173,7 @@
         android:layout_width="match_parent"
         android:layout_height="1dp"
         android:layout_marginTop="11dp"
-        android:background="#7E7E7E"
+        android:background="#D8D8D8"
         app:layout_constraintBottom_toTopOf="@+id/linear1" />
 
     <LinearLayout

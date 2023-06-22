@@ -10,14 +10,15 @@ import com.example.siren.network.response.Response
 
 
 class DetailNotTreatAdapter(
-    private val items: List<Response<String>>
+    private val items: List<String>
 ) : RecyclerView.Adapter<DetailNotTreatAdapter.ViewHolder>() {
 
     inner class ViewHolder(private val binding: ItemDontcheckBinding) :
         RecyclerView.ViewHolder(binding.root) {
         fun bind(item: String) {
-            binding.apply {
-                tvState.text = item
+            with(binding) {
+//                .text = item.split(" ").last()
+//                tvState.text = item.split(" ").first()
             }
         }
     }
@@ -28,19 +29,8 @@ class DetailNotTreatAdapter(
     }
 
     override fun onBindViewHolder(holder: ViewHolder, position: Int) {
-        holder.bind(items[position].message)
+        holder.bind(items[position])
     }
-//    val emergencyRoom: String,
-//    val operatingRoom: String,
-//    val geIntensiveCareUnit: String,
-//    val thIntensiveCareUnit: String,
-//    val intensiveCareUnit: String,
-//    val neurologicalIntensiveCareUnit: String,
-//    val neonatalIntensiveCareUnit: String,
-//    val neurosurgeryIntensiveCareUnit: String,
-//    val inpatientRoom: String,
-//    val surgicalInpatientRoom: String,
-//    val neurologyInpatientRoom: String
 
     override fun getItemCount(): Int {
         return items.size

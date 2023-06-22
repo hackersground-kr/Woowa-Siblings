@@ -12,7 +12,8 @@ class MainAdapter(
 //    val distanceList: List<Distance>,
     val emergencyList: List<EmergencyResponse>,
     val coordinateList: List<CoordinateResponse>,
-    val onClick: (/*Distance, */EmergencyResponse, CoordinateResponse) -> Unit
+    val onClick: (CoordinateResponse) -> Unit,
+    val onClickNavigation: (CoordinateResponse) -> Unit
 ) : RecyclerView.Adapter<MainAdapter.ViewHolder>() {
 
     inner class ViewHolder(private val binding: ItemHospitalBinding) :
@@ -28,7 +29,8 @@ class MainAdapter(
 //                tvRemainingTime.text = distance.remainingTime
                 tvHospitalName.text = coordinate.dutyName
 
-                ibNavigation.setOnClickListener { onClick.invoke(/*distance, */emergency, coordinate) }
+                binding.root.setOnClickListener { onClick.invoke(coordinate) }
+                ibNavigation.setOnClickListener { onClickNavigation.invoke(coordinate) }
             }
         }
 

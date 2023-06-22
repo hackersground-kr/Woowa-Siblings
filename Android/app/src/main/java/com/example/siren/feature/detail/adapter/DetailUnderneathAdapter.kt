@@ -15,9 +15,9 @@ class DetailUnderneathAdapter(
     inner class ViewHolder(private val binding: ItemEmergencyRoomBinding) :
         RecyclerView.ViewHolder(binding.root) {
         fun bind(item: String) {
-            binding.apply {
+            with(binding) {
                 tvState.text = item.split(" ").first()
-                tvRemainState.text = item.split(" ").last()
+                tvRemainState.text =  if (item.split(" ").last() == "None") "0" else item.split(" ").last()
             }
         }
     }

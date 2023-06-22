@@ -6,7 +6,7 @@
     android:background="@drawable/background_recycler_remaining"
     android:paddingHorizontal="11dp"
     android:paddingVertical="5dp"
-    android:layout_marginHorizontal="5dp">
+    android:layout_marginEnd="5dp">
 
     <ImageView
         android:id="@+id/img_state"

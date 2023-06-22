@@ -15,7 +15,8 @@ class DetailAboveAdapter(
         RecyclerView.ViewHolder(binding.root) {
         fun bind(item: String) {
             with(binding) {
-                tvRemainState.text = item.split(" ").last()
+
+                tvRemainState.text = if (item.split(" ").last() == "None") "0" else item.split(" ").last()
                 tvState.text = item.split(" ").first()
             }
         }

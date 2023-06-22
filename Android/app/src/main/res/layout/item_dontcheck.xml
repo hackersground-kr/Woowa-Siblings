@@ -4,8 +4,7 @@
     android:layout_width="230dp"
     android:layout_height="120dp"
     android:background="@drawable/background_recycler_remaining"
-    android:padding="8dp"
-    android:layout_marginHorizontal="5dp">
+    android:padding="8dp">
 
     <ImageView
         android:id="@+id/img_state"
@@ -27,6 +26,7 @@
         app:layout_constraintTop_toTopOf="parent" />
 
     <TextView
+        android:id="@+id/tv_content"
         android:layout_width="0dp"
         android:layout_height="0dp"
         android:text="매주 목요일 19PM~ 일요일 08am, 공휴일- f/u 소아 이외 소아 진료 불가 / 단, 소아 심정지, 급성저산소증, 경련 중인 소아 등 중증 응급 제외"

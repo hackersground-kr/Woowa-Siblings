@@ -14,6 +14,7 @@ import androidx.lifecycle.lifecycleScope
 import androidx.viewpager2.widget.ViewPager2
 import com.example.siren.R
 import com.example.siren.databinding.ActivityMainBinding
+import com.example.siren.feature.detail.DetailActivity
 import com.example.siren.feature.main.adapter.MainAdapter
 import com.example.siren.feature.navigation.NavigationActivity
 import com.example.siren.model.Distance
@@ -65,16 +66,28 @@ class MainActivity : AppCompatActivity(), OnMapReadyCallback {
                     launch {
                         viewModel.coordinate.collect { coordinateList ->
                             if (emergencyList.isNotEmpty() && coordinateList.isNotEmpty()) {
-                                mainAdapter = MainAdapter(/*distanceList,*/ emergencyList, coordinateList) {/* distance,*/ emergency, coordinate ->
-                                    startActivity(
-                                        Intent(
-                                            this@MainActivity,
-                                            NavigationActivity::class.java
-                                        ).apply {
+                                mainAdapter = MainAdapter(
+                                    emergencyList,
+                                    coordinateList,
+                                    { coordinate ->
+                                        startActivity(
+                                            Intent(
+                                                this@MainActivity,
+                                                DetailActivity::class.java
+                                            ).apply {
+                                                putExtra("hpName", coordinate.dutyName)
+                                            }
+                                        )
+                                    }, {
+                                        startActivity(
+                                            Intent(
+                                                this@MainActivity,
+                                                NavigationActivity::class.java
+                                            ).apply {
 //                                putExtra("")
-                                        }
-                                    )
-                                }
+                                            }
+                                        )
+                                    })
                                 binding.viewPager.adapter = mainAdapter
                                 setMarker(coordinateList)
                             }
