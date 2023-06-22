@@ -24,6 +24,9 @@ jobs:
       - name: Make Directory
         run: mkdir -p server/src/main/resources
           
+      - name: test
+        run: cd server/src/main/resources
+          
       - uses: actions/checkout@v3
       - run: touch ./server/src/main/resources/application.properties
       - run: echo "${{ secrets.APPLICATION }}" > ./server/src/main/resources/application.properties
@@ -31,7 +34,7 @@ jobs:
       - uses: actions/upload-artifact@v2
         with:
           name: application.properties
-          path: .server/src/main/resources/application.properties
+          path: ./server/src/main/resources/application.properties
 
       - name: chmod
         run: chmod +x server/gradlew
