@@ -1,10 +1,15 @@
 package com.example.siren.feature.main
 
+import android.content.Intent
 import android.os.Bundle
 import android.widget.Toast
+import androidx.activity.viewModels
 import androidx.appcompat.app.AppCompatActivity
+import androidx.lifecycle.lifecycleScope
 import com.example.siren.R
 import com.example.siren.databinding.ActivityMainBinding
+import com.example.siren.feature.main.adapter.MainAdapter
+import com.example.siren.feature.navigation.NavigationActivity
 import com.example.siren.util.HorizontalMarginItemDecoration
 import com.example.siren.util.SirenApplication
 import com.kakaomobility.knsdk.KNLanguageType
@@ -18,11 +23,12 @@ import com.microsoft.appcenter.AppCenter
 import com.microsoft.appcenter.analytics.Analytics
 import com.microsoft.appcenter.crashes.Crashes
 import dagger.hilt.android.AndroidEntryPoint
-
+import kotlinx.coroutines.launch
 
 @AndroidEntryPoint
 class MainActivity : AppCompatActivity() {
     private val binding: ActivityMainBinding by lazy { ActivityMainBinding.inflate(layoutInflater) }
+    private val viewModel: MainViewModel by viewModels()
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -38,15 +44,26 @@ class MainActivity : AppCompatActivity() {
     }
 
     private fun initViewPager() = with(binding.viewPager) {
-//        adapter = MainAdapter() {
-//            startActivity(Intent(this@MainActivity, NavigationActivity::class.java))
-//        }
+        lifecycleScope.launch {
+            viewModel.emergency.collect { data ->
+                adapter = MainAdapter(data) {
+                    startActivity(
+                        Intent(
+                            this@MainActivity,
+                            NavigationActivity::class.java
+                        ).apply {
+                        }
+                    )
+                }
+            }
+        }
 
         offscreenPageLimit = 3
         setPadding(50, 0, 50, 100)
 
         val nextItemVisiblePx = resources.getDimension(R.dimen.viewpager_next_item_visible)
-        val currentItemHorizontalMarginPx = resources.getDimension(R.dimen.viewpager_current_item_horizontal_margin)
+        val currentItemHorizontalMarginPx =
+            resources.getDimension(R.dimen.viewpager_current_item_horizontal_margin)
         val pageTranslationX = nextItemVisiblePx + currentItemHorizontalMarginPx
 
         setPageTransformer { page, position ->

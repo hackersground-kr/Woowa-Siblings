@@ -5,7 +5,7 @@ import com.example.siren.network.response.Response
 import retrofit2.http.GET
 
 interface SirenApi {
-    @GET
+    @GET("emergency")
     suspend fun getEmergency(
-    ): Response<EmergencyResponse>
+    ): Response<List<EmergencyResponse>>
 }

@@ -6,6 +6,7 @@ import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
 import com.example.siren.databinding.ItemHospitalBinding
 import com.example.siren.network.response.EmergencyResponse
+import dagger.hilt.android.AndroidEntryPoint
 
 class MainAdapter(
     private val items: List<EmergencyResponse>,

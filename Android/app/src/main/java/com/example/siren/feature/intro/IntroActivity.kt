@@ -3,13 +3,11 @@ package com.example.siren.feature.intro
 import android.Manifest
 import android.content.Intent
 import android.content.pm.PackageManager
-import android.os.Build
-import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import androidx.appcompat.app.AlertDialog
+import androidx.appcompat.app.AppCompatActivity
 import androidx.core.app.ActivityCompat
 import androidx.lifecycle.lifecycleScope
-import com.example.siren.R
 import com.example.siren.databinding.ActivityIntroBinding
 import com.example.siren.feature.main.MainActivity
 import com.example.siren.util.SirenApplication
