@@ -26,8 +26,10 @@ struct MainView: View {
                     .ignoresSafeArea()
             } else {
                 ZStack {
-                    MapView()
-                        .ignoresSafeArea()
+                    if let coordinates = viewModel.coordinates {
+                        MapView(coordinates: coordinates)
+                            .ignoresSafeArea()
+                    }
                     VStack {
                         Spacer()
                         ScrollView(.horizontal, showsIndicators: false) {
@@ -113,6 +115,7 @@ struct MainView: View {
                 }
             }
         }
+        .onAppear(perform: viewModel.initData)
     }
 }
 
