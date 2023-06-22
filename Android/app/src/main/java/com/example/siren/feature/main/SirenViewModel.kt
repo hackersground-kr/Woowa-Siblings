@@ -14,7 +14,7 @@ import kotlinx.coroutines.launch
 import javax.inject.Inject
 
 @HiltViewModel
-class MainViewModel @Inject constructor(
+class SirenViewModel @Inject constructor(
     private val sirenApi: SirenApi
 ) : ViewModel() {
 

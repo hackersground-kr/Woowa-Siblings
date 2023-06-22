@@ -46,6 +46,6 @@ object NetworkModule {
 
     @Singleton
     @Provides
-    fun provideMealService(retrofit: Retrofit): SirenApi =
+    fun provideSirenService(retrofit: Retrofit): SirenApi =
         retrofit.create(SirenApi::class.java)
 }

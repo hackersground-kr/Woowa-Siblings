@@ -18,7 +18,6 @@ import com.example.siren.feature.main.adapter.MainAdapter
 import com.example.siren.feature.navigation.NavigationActivity
 import com.example.siren.model.Distance
 import com.example.siren.network.response.CoordinateResponse
-import com.example.siren.network.response.EmergencyResponse
 import com.example.siren.util.HorizontalMarginItemDecoration
 import com.google.android.gms.location.FusedLocationProviderClient
 import com.google.android.gms.location.LocationServices
@@ -43,7 +42,7 @@ class MainActivity : AppCompatActivity(), OnMapReadyCallback {
     private lateinit var naverMap: NaverMap
     private lateinit var mainAdapter: MainAdapter
     private val fusedLocationClient: FusedLocationProviderClient by lazy { LocationServices.getFusedLocationProviderClient(this) }
-    private val viewModel: MainViewModel by viewModels()
+    private val viewModel: SirenViewModel by viewModels()
     private val distanceList =  mutableListOf<Distance>()
 
     override fun onCreate(savedInstanceState: Bundle?) {
