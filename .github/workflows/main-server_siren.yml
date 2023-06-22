@@ -30,7 +30,9 @@ jobs:
           ls
           
       - uses: actions/checkout@v3
-      - run: touch ./server/src/main/resources/application.properties
+      - run: |
+          cd server/src/main/resources
+          touch application.properties
       - run: echo "${{ secrets.APPLICATION }}" > ./server/src/main/resources/application.properties
       - run: cat ./server/src/main/resources/application.properties
       - uses: actions/upload-artifact@v2
