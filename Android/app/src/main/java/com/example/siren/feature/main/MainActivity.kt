@@ -12,11 +12,13 @@ import com.example.siren.databinding.ActivityMainBinding
 import com.example.siren.feature.main.adapter.MainAdapter
 import com.example.siren.network.response.Emergency
 import com.example.siren.util.HorizontalMarginItemDecoration
-import net.daum.mf.map.api.MapView
+import com.naver.maps.map.NaverMap
+import com.naver.maps.map.OnMapReadyCallback
 import java.lang.Math.abs
 
-class MainActivity : AppCompatActivity() {
+class MainActivity : AppCompatActivity(), OnMapReadyCallback {
     private val binding: ActivityMainBinding by lazy { ActivityMainBinding.inflate(layoutInflater) }
+    private lateinit var naverMap: NaverMap
     var pagerDummy = ArrayList<Emergency>()
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -25,7 +27,7 @@ class MainActivity : AppCompatActivity() {
 //        binding.viewPager.setPageTransformer(pageTransformer)
 
 
-        initMapView()
+        initMapView(savedInstanceState)
 
         pagerDummy.add(Emergency(1, "일병원병원"))
         pagerDummy.add(Emergency(2, "이병원병원"))
@@ -63,11 +65,14 @@ class MainActivity : AppCompatActivity() {
         binding.viewPager.addItemDecoration(itemDecoration)
     }
 
-    private fun initMapView() {
-        val mapView = MapView(this)
-        binding.mapView.addView(mapView)
+    private fun initMapView(savedInstanceState: Bundle?) {
+        binding.mapView.onCreate(savedInstanceState)
+        binding.mapView.getMapAsync(this)
     }
 
+    override fun onMapReady(map: NaverMap) {
+        naverMap = map
+    }
 
 
 }

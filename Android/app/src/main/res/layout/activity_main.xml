@@ -6,7 +6,7 @@
     android:layout_height="match_parent"
     tools:context=".feature.main.MainActivity">
 
-    <RelativeLayout
+    <com.naver.maps.map.MapView
         android:id="@+id/map_view"
         android:layout_width="match_parent"
         android:layout_height="match_parent" />
@@ -29,8 +29,5 @@
         android:layout_gravity="bottom"
         android:paddingBottom="25dp"
         />
-
-
-
 
 </FrameLayout>

@@ -10,7 +10,8 @@ dependencyResolutionManagement {
     repositories {
         google()
         mavenCentral()
-        maven { url 'https://devrepo.kakao.com/nexus/content/groups/public/' }
+        maven { url "https://devrepo.kakaomobility.com/repository/kakao-mobility-android-knsdk-public/"}
+        maven { url 'https://naver.jfrog.io/artifactory/maven/' }
     }
 }
 rootProject.name = "My Application"

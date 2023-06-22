@@ -20,7 +20,11 @@
 
         <meta-data
             android:name="com.kakao.sdk.AppKey"
-            android:value="cff402064d1f2cb51ebcff82004170fd" />
+            android:value="@string/kakao_mobility_app_key" />
+
+        <meta-data
+            android:name="com.naver.maps.map.CLIENT_ID"
+            android:value="@string/naver_map_client_id"/>
 
         <activity
             android:name=".feature.main.MainActivity"

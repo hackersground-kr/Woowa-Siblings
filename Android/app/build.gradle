@@ -53,6 +53,6 @@ dependencies {
 
     implementation 'org.jetbrains.kotlinx:kotlinx-coroutines-android:1.6.4'
 
-    implementation fileTree(include: ['*.jar'], dir: 'libs')
-    implementation files('libs/libDaumMapAndroid.jar')
+    implementation 'com.naver.maps:map-sdk:3.16.1'
+    implementation 'com.kakaomobility.knsdk:knsdk_ui:1.6.11'
 }
