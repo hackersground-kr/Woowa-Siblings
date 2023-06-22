@@ -15,6 +15,7 @@ class MainViewModel: ObservableObject {
     @Published var startX: CGFloat = 0
     @Published var startY: CGFloat = 0
     @Published var coordinates: [Coordinate] = []
+    @Published var selected: Coordinate? = nil
     
     func initData() {
         self.fetchCoordinate()
