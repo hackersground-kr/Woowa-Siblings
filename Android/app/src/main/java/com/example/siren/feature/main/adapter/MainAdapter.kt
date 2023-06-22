@@ -1,5 +1,6 @@
 package com.example.siren.feature.main.adapter
 
+import android.util.Log
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
@@ -42,7 +43,8 @@ class MainAdapter(
     }
 
     override fun onBindViewHolder(holder: ViewHolder, position: Int) {
-        holder.bind(/*distanceList[position],*/ emergencyList[position], coordinateList[position])
+        holder.bind(emergencyList[position], coordinateList[position])
+        Log.d("버그 찾기", emergencyList[position].imageUrl)
     }
 
     override fun getItemCount(): Int {

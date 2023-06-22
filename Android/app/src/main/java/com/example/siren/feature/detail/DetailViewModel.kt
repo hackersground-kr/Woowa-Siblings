@@ -2,6 +2,7 @@ package com.example.siren.feature.detail
 
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
+import com.example.siren.di.module.Local
 import com.example.siren.network.api.SirenApi
 import com.example.siren.network.response.CoordinateResponse
 import com.example.siren.network.response.EmergencyResponse

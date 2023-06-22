@@ -5,6 +5,7 @@ import android.content.Intent
 import android.content.pm.PackageManager
 import android.location.Location
 import android.os.Bundle
+import android.util.Log
 import android.view.Gravity
 import android.widget.Toast
 import androidx.activity.viewModels
@@ -17,8 +18,8 @@ import com.example.siren.databinding.ActivityMainBinding
 import com.example.siren.feature.detail.DetailActivity
 import com.example.siren.feature.main.adapter.MainAdapter
 import com.example.siren.feature.navigation.NavigationActivity
-import com.example.siren.model.Distance
 import com.example.siren.network.response.CoordinateResponse
+import com.example.siren.network.response.Summary
 import com.example.siren.util.HorizontalMarginItemDecoration
 import com.google.android.gms.location.FusedLocationProviderClient
 import com.google.android.gms.location.LocationServices
@@ -44,7 +45,8 @@ class MainActivity : AppCompatActivity(), OnMapReadyCallback {
     private lateinit var mainAdapter: MainAdapter
     private val fusedLocationClient: FusedLocationProviderClient by lazy { LocationServices.getFusedLocationProviderClient(this) }
     private val viewModel: MainViewModel by viewModels()
-    private val distanceList =  mutableListOf<Distance>()
+    private lateinit var start: String
+    private val directionList = mutableListOf<Summary>()
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -66,6 +68,7 @@ class MainActivity : AppCompatActivity(), OnMapReadyCallback {
                     launch {
                         viewModel.coordinate.collect { coordinateList ->
                             if (emergencyList.isNotEmpty() && coordinateList.isNotEmpty()) {
+
                                 mainAdapter = MainAdapter(
                                     emergencyList,
                                     coordinateList,
@@ -185,6 +188,8 @@ class MainActivity : AppCompatActivity(), OnMapReadyCallback {
             .addOnSuccessListener { location: Location? ->
                 currentLocation = location
 
+                start = "${currentLocation!!.longitude},${currentLocation!!.latitude}"
+
                 naverMap.locationOverlay.run {
                     isVisible = true
                     position = LatLng(currentLocation!!.latitude, currentLocation!!.longitude)
@@ -206,6 +211,9 @@ class MainActivity : AppCompatActivity(), OnMapReadyCallback {
 
                 CoroutineScope(Dispatchers.Default).launch {
                     val selectedEmergency = mainAdapter.coordinateList[position]
+                    launch {
+                        viewModel.getDirection(start, "${selectedEmergency.wgs84y},${selectedEmergency.wgs84x}")
+                    }
                     val cameraUpdate = CameraUpdate
                         .scrollAndZoomTo(LatLng(selectedEmergency.wgs84x, selectedEmergency.wgs84y), 15.0)
                         .animate(CameraAnimation.Easing)
