@@ -39,5 +39,27 @@
 
 > **여러분의 제품/서비스를 Microsoft 애저 클라우드에 배포하기 위한 절차를 구체적으로 나열해 주세요.**
 > > - iOS : 
-> - android : 
+> android :
+Microsoft App Center에 사전 준비 사항
+1. [App Center](https://appcenter.ms/apps) 에 접속해서 로그인한다.
+2. Add new app 버튼을 누르고 `App name`, `Release Type`, `Icon`, `OS`, `Platform`을 선택한 후 Add new app을 클릭한다.
+3. 안드로이드 프로젝트의 app/build.gralde에 아래 epicenter dependency를 추가한 뒤 sync 한다.
+```
+dependencies {
+    def appCenterSdkVersion = '4.4.5'
+    implementation "com.microsoft.appcenter:appcenter-analytics:${appCenterSdkVersion}"
+    implementation "com.microsoft.appcenter:appcenter-crashes:${appCenterSdkVersion}"
+}
+
+```
+4. MainActivity의 `onCreate()` 에 아래 코드를 추가한다.
+두번째 인자에는 App Center에서 발급해준 `app secret`을 적는다.
+``` 
+AppCenter.start(application, "{Your app secret here}",
+                  Analytics.class, Crashes.class);
+```
+5. 안드로이드 프로젝트에서 Generate Signed Bundle or Apk를 클릭해서 Android App Bundle을 선택한 후 NEXT를 누른다.
+6. 프로젝트의 Key store path를 등록하고 Key password와 Key Store password를 입력한 후 NEXT를 누른다.
+7. `release`를 선택한 후 Create를 눌러 aab 파일을 생성한다.
+8. App Center의 Distribute에 들어가서 New release를 클릭한 후 app/release 디렉터리에 있는 aab 파일을 등록한다.
 > - backend : 
